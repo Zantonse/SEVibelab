@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okta Vibe Coding Lab</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Prism.js for Syntax Highlighting (Theme: Tomorrow Night) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-okta-ice text-okta-text font-sans antialiased min-h-screen">
+
+    <!-- Global Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-1.5 bg-slate-200 z-50">
+        <div id="global-progress" class="h-full bg-gradient-to-r from-okta-midnight to-okta-blue transition-all duration-500 ease-out" style="width: 0%"></div>
+    </div>
+    <div id="progress-text" class="fixed top-2 right-2 z-50 text-[10px] font-bold text-okta-midnight bg-white/80 backdrop-blur px-2 py-1 rounded border border-slate-200 shadow-sm hidden">
+        0% Complete
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 translate-y-20 opacity-0 transition-all duration-300 bg-okta-midnight text-white px-6 py-3 rounded-lg shadow-xl font-bold z-50 flex items-center gap-3">
+        <i class="fas fa-check-circle text-okta-blue"></i> 
+        <span>Copied to clipboard</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="sticky top-0 z-40 glass-panel mt-1.5 transition-transform duration-300">
+        <div class="page-shell">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo Area -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="toggleView('main')">
+                    <!-- Simple CSS Circle representing the 'O' -->
+                    <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-4 sm:border-[6px] border-okta-midnight"></div>
+                    <span class="font-bold text-base sm:text-xl tracking-tight text-okta-midnight">SE Vibe <span class="text-okta-blue">Lab</span><span class="hidden sm:inline"> Coding</span></span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2">
+                        <button onclick="toggleView('main', 'phase1')" class="text-okta-gray hover:text-okta-midnight hover:bg-slate-100 px-3 py-2 rounded-md text-sm font-semibold transition-colors">Phase 1</button>
+                        <button onclick="toggleView('main', 'phase2')" class="text-okta-gray hover:text-okta-midnight hover:bg-slate-100 px-3 py-2 rounded-md text-sm font-semibold transition-colors">Phase 2</button>
+                        <button onclick="toggleView('main', 'phase3')" class="text-okta-gray hover:text-okta-midnight hover:bg-slate-100 px-3 py-2 rounded-md text-sm font-semibold transition-colors">Phase 3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center justify-between py-3">
+                <div class="flex items-center gap-3">
+                    <span class="desktop-nav-pill text-okta-gray"><i class="fas fa-compass text-okta-blue"></i> Guided Flow</span>
+                    <span class="desktop-nav-pill text-okta-gray"><i class="fas fa-terminal text-okta-blue"></i> Copilot Ready</span>
+                    <span class="desktop-nav-pill text-okta-gray"><i class="fas fa-cloud text-okta-blue"></i> Okta Safe</span>
+                </div>
+                <button onclick="document.getElementById('phase3').scrollIntoView({behavior: 'smooth'})" class="inline-flex items-center gap-2 bg-okta-midnight text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-900 transition-colors">
+                    Fast-forward to Copilot <i class="fas fa-forward"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Progress Strip (Contextual) -->
+        <div id="progress-strip" class="w-full bg-slate-50 border-b border-slate-200 py-1 transition-all duration-300 overflow-x-auto">
+            <div class="page-shell flex justify-center text-[10px] sm:text-xs font-mono font-medium text-okta-gray whitespace-nowrap">
+                <span class="mr-1 sm:mr-2 hidden sm:inline">YOU'RE HERE:</span>
+                <span id="prog-1" class="text-okta-blue">① Canvas</span>
+                <span class="mx-1 sm:mx-2 text-slate-400">→</span>
+                <span id="prog-2" class="text-okta-blue">② Next.js</span>
+                <span class="mx-1 sm:mx-2 text-slate-400">→</span>
+                <span id="prog-3" class="text-okta-blue">③ Copilot</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- VIEW: Main Content -->
+    <div id="main-view" class="space-y-12">
+        <!-- Hero Section -->
+    <div class="relative overflow-hidden bg-white border-b border-slate-200">
+            <!-- Cool Tech Banner Background -->
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" alt="Abstract Tech Banner" class="w-full h-full object-cover">
+                <!-- Gradient Overlay for Readability -->
+                <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/95"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80"></div>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col items-center text-center">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-blue-50 text-okta-blue text-xs font-bold tracking-wider uppercase mb-8 border border-blue-100 shadow-sm">
+                    Engineering Enablement
+                </span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight aura-text">
+                    Prompt-Driven Development
+                </h1>
+                <p class="mt-4 max-w-2xl text-lg sm:text-xl text-slate-600 leading-relaxed font-medium px-4 sm:px-0">
+                    Move from manual syntax writing to "Architect & Verify". <br class="hidden sm:inline">
+                    Accelerate your workflow securely with AI.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0">
+                    <a href="prerequisites.html" class="bg-white text-okta-midnight px-8 py-4 rounded-xl font-bold hover:bg-slate-50 hover:shadow-card transition-all border border-slate-200 shadow-sm text-lg transform hover:-translate-y-0.5 duration-200 text-center">
+                        Prerequisites
+                    </a>
+                    <a href="concepts.html" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 hover:shadow-glow transition-all shadow-lg flex items-center justify-center gap-3 text-lg transform hover:-translate-y-0.5 duration-200">
+                        <i class="fas fa-book-open"></i> Concepts
+                    </a>
+                </div>
+                <div class="hero-grid w-full">
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Phase 1</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Canvas → Concept</h3>
+                        <p class="text-sm text-slate-500">Architect the aesthetic with Gemini Canvas before you ever open a repo.</p>
+                    </div>
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Phase 2</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Next.js → Reality</h3>
+                        <p class="text-sm text-slate-500">Transplant the generated UI into a typed codebase with reusable components.</p>
+                    </div>
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Phase 3</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Copilot → Velocity</h3>
+                        <p class="text-sm text-slate-500">Use GitHub Copilot to refactor, wire APIs, and validate flows with Okta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Wrapper -->
+    <main class="page-shell py-14 space-y-16">
+
+            <!-- Executive Summary (Collapsible Left, Static Right) -->
+            <section id="executive-summary" class="scroll-mt-24">
+                <div class="section-shell">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center shadow-md">
+                            <i class="fas fa-lightbulb text-white text-lg"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-okta-midnight">Executive Summary</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- What is Vibe Coding? -->
+                        <div>
+                            <h3 class="text-lg font-bold text-okta-midnight mb-3">What is Vibe Coding?</h3>
+                            <p class="text-slate-600 leading-relaxed mb-4">
+                                Vibe Coding is the art of prompting your way to a working prototype. For Sales Engineers, it means shifting from "I need to find a developer" to "I just built it." You describe the outcome—the customer's brand, the specific authentication flow, the exact dashboard they want to see—and let AI handle the syntax.
+                            </p>
+                            <p class="text-slate-600 leading-relaxed">
+                                It transforms you from a technical presenter into a real-time solutions architect, enabling you to build custom, high-fidelity demos at the speed of conversation.
+                            </p>
+                        </div>
+
+                        <!-- Key Benefits Grid -->
+                        <div class="grid md:grid-cols-2 gap-4 pt-4 border-t border-slate-200">
+                            <div class="flex items-start gap-4 p-4 bg-blue-50 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-okta-midnight block mb-1">Bridge the Dev Gap</span>
+                                    <span class="text-sm text-slate-600">Generate working code for OIDC, SCIM, or Hooks on the fly.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-okta-midnight block mb-1">POC Velocity</span>
+                                    <span class="text-sm text-slate-600">Automate tenant setup (users, groups) to focus on selling.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-orange-50 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-okta-midnight block mb-1">Instant Credibility</span>
+                                    <span class="text-sm text-slate-600">Speak the language of developers (React, APIs, Tokens) confidently.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-pink-50 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-pink-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <i class="fas fa-random"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-okta-midnight block mb-1">Adaptive Storytelling</span>
+                                    <span class="text-sm text-slate-600">Pivot your demo live when a prospect mentions a new pain point.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 1 -->
+            <section id="phase1" class="relative scroll-mt-24">
+                <div class="section-shell">
+                    <div class="bg-gradient-to-br from-blue-900 to-purple-900 -m-11 mb-6 p-8 rounded-t-[1.75rem]">
+                        <span class="uppercase text-xs tracking-[0.2em] text-white/80 block mb-2">Lab 1 • Canvas Prototype</span>
+                        <h2 class="text-2xl font-bold text-white mb-2">The "One-Shot" Prototype</h2>
+                        <p class="text-blue-100">Use Gemini Canvas to generate a fully branded experience before jumping into VS Code.</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl font-bold shadow-md flex-shrink-0">1</div>
+                            <h3 class="text-2xl font-bold text-okta-midnight">Discovery Call Toolkit</h3>
+                        </div>
+
+                        <!-- Scenario Info -->
+                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+                            <div class="text-center">
+                                <span class="text-xs uppercase tracking-wider text-slate-500 font-bold block mb-2">Your Challenge</span>
+                                <span id="scenario-title" class="text-okta-midnight font-bold text-xl block mb-3">Okta SE Discovery Checklist</span>
+                                <p id="scenario-desc" class="text-slate-600 text-sm italic">
+                                    Build a structured discovery tool for qualifying Okta opportunities during customer calls.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Step 0 -->
+                            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                                <h4 class="text-lg font-bold text-okta-midnight mb-3 flex items-center gap-2">
+                                    <i class="fas fa-wrench text-okta-blue"></i> Step 0: Setup
+                                </h4>
+                                <p class="text-slate-600 mb-4">
+                                    Before we begin, we need to activate our workspace.
+                                </p>
+                                <ul class="list-disc list-inside text-slate-600 space-y-2 ml-2">
+                                    <li>Open Gemini</li>
+                                    <li>Go to <strong>Tools</strong> (usually in the sidebar or settings)</li>
+                                    <li>Add/Enable the <strong>Canvas</strong> tool</li>
+                                </ul>
+                            </div>
+
+                            <!-- Step 1 -->
+                            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm transition-all duration-300 hover:border-okta-blue/50 hover:shadow-md">
+                                <h4 class="text-lg font-bold text-okta-midnight mb-3 flex items-center gap-2">
+                                    <i class="fas fa-terminal text-okta-blue"></i> The Prompt
+                                </h4>
+                                <p class="text-slate-600 mb-4">
+                                    Copy this complete prompt into Gemini Canvas to generate your discovery checklist tool.
+                                </p>
+                                <div class="code-block bg-slate-900 group shadow-inner rounded-lg overflow-hidden">
+                                    <button onclick="copyToClipboard(this)" class="copy-btn bg-slate-700 hover:bg-slate-600 text-xs text-white px-2 py-1 rounded transition-colors">Copy</button>
+                                    <pre><code id="prompt-step-1" class="language-markdown prompt-text">Create a single-file HTML page called "Okta SE Discovery Checklist".
+
+Requirements:
+
+One HTML file only (no external JS files)
+Use Tailwind via CDN for basic styling
+This page is for Okta Sales Engineers during discovery calls
+
+UI Structure:
+
+Page title: "Okta Sales Engineer Discovery Checklist"
+Sectioned checklist with headings and checkboxes for:
+Business Goals
+Current Identity Stack
+Applications & Protocols
+MFA & Device Posture
+Lifecycle & Governance
+Privileged Access
+Security & Compliance
+Timeline & Success Criteria
+
+Each section should:
+
+Have 5–8 realistic Okta-related checklist items
+Include a small optional notes textarea
+
+Behavior:
+
+Show a checked-count per section
+Show a total checked count at the top of the page
+
+Constraints:
+
+Inline JavaScript only
+Keep logic simple and readable
+Add brief comments explaining what the JS is doing
+Do NOT add persistence, APIs, or frameworks
+Do NOT over-engineer
+
+Return the complete HTML file.</code></pre>
+                                </div>
+                            </div>
+
+                            <!-- What You'll Build -->
+                            <div class="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl border border-emerald-200">
+                                <h4 class="text-lg font-bold text-okta-midnight mb-3 flex items-center gap-2">
+                                    <i class="fas fa-magic text-emerald-600"></i> What You'll Build
+                                </h4>
+                                <p class="text-slate-600 mb-4">
+                                    This single prompt will generate a complete discovery tool with:
+                                </p>
+                                <ul class="space-y-2 text-slate-600">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                        <span><strong>8 Discovery Categories:</strong> From Business Goals to Timeline tracking</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                        <span><strong>Interactive Checkboxes:</strong> Track progress per section and overall</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                        <span><strong>Notes Fields:</strong> Capture customer-specific context on the fly</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                        <span><strong>Real-time Counters:</strong> See completion progress as you check items</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                        <span><strong>Single HTML File:</strong> Easy to share, open in browser, no setup required</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Pro Tip -->
+                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-5 rounded-r-xl">
+                                <div class="flex gap-3">
+                                    <i class="fas fa-lightbulb text-yellow-600 text-xl flex-shrink-0"></i>
+                                    <div>
+                                        <h5 class="font-bold text-okta-midnight mb-2">SE Pro Tip</h5>
+                                        <p class="text-sm text-slate-600">
+                                            Once generated, customize the checklist items to match your territory's most common use cases. 
+                                            Save different versions for Workforce vs. CIAM opportunities. You can even ask Gemini to 
+                                            "add a section for API Access Management" or "expand the MFA section with Okta Verify questions."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="h-px bg-slate-200"></div>
+
+            <!-- Lab 1 Review Section -->
+            <section id="lab1-review" class="scroll-mt-24">
+                <div class="section-shell bg-gradient-to-br from-emerald-50 to-sky-50 text-okta-midnight">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center shadow-md">
+                            <i class="fas fa-check-circle text-white text-lg"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-okta-midnight">Lab 1 Review: What You Just Learned</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <!-- Left: Key Skills -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-okta-midnight mb-4 flex items-center gap-2">
+                                <i class="fas fa-trophy text-yellow-500"></i> Core Skills Acquired
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-blue-100 text-okta-blue flex items-center justify-center flex-shrink-0 text-xs font-bold">1</div>
+                                    <div>
+                                        <span class="font-bold text-okta-midnight block text-sm">Structured Requirements</span>
+                                        <span class="text-xs text-slate-600">You learned how to translate business needs into technical specifications with clear constraints and deliverables.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">2</div>
+                                    <div>
+                                        <span class="font-bold text-okta-midnight block text-sm">Discovery Framework Thinking</span>
+                                        <span class="text-xs text-slate-600">Built a tool to systematically capture identity requirements across 8 key areas - from MFA to compliance.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center flex-shrink-0 text-xs font-bold">3</div>
+                                    <div>
+                                        <span class="font-bold text-okta-midnight block text-sm">AI-Powered SE Tools</span>
+                                        <span class="text-xs text-slate-600">In minutes, you created a custom discovery tool that standardizes customer conversations and captures critical requirements.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Reflection Questions -->
+                    <div class="mt-6 bg-white text-okta-midnight rounded-xl p-6 border border-slate-200 shadow-sm">
+                        <h3 class="font-bold mb-3 flex items-center gap-2 text-okta-midnight">
+                            <i class="fas fa-question-circle text-okta-blue"></i> Reflect & Prepare
+                        </h3>
+                        <p class="text-sm mb-4 text-okta-gray">Before moving to Lab 2, ask yourself:</p>
+                        <ul class="space-y-3 text-sm text-okta-midnight">
+                            <li class="flex items-start gap-2">
+                                <span class="text-okta-blue font-bold">→</span>
+                                <span>Could you use this Discovery Checklist in your next customer conversation?</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-okta-blue font-bold">→</span>
+                                <span>If Gemini generated something broken, would you know how to give feedback to fix it?</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-okta-blue font-bold">→</span>
+                                <span>What other SE tools could you build with this same prompt-engineering approach?</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="h-px bg-slate-200"></div>
+
+            <!-- INTERLUDE: The Bridge Lesson (Tabs) -->
+            <section id="bridge-lesson" class="scroll-mt-24">
+                <div class="section-shell bg-indigo-900 text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-12 opacity-10"><i class="fas fa-random text-9xl"></i></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center font-bold shadow-lg">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold">Lesson: The Bridge to VS Code</h2>
+                        </div>
+
+                        <!-- Tab Controls -->
+                        <div class="flex gap-4 border-b border-indigo-700 mb-6">
+                            <button onclick="switchTab('tab-workflow')" id="btn-workflow" class="pb-2 px-4 text-sm font-bold border-b-2 border-green-400 text-white transition-colors">The Vibe Workflow</button>
+                            <button onclick="switchTab('tab-api')" id="btn-api" class="pb-2 px-4 text-sm font-bold border-b-2 border-transparent text-indigo-300 hover:text-white transition-colors">The API Integration Rule</button>
+                        </div>
+
+                        <!-- Tab Content: Workflow -->
+                        <div id="tab-workflow" class="grid md:grid-cols-2 gap-12">
+                            <div>
+                                <h3 class="font-bold text-indigo-200 mb-4">How to move from Prototype to Production</h3>
+                                <ol class="space-y-6 relative border-l-2 border-indigo-700 ml-3 pl-8">
+                                    <li class="relative">
+                                        <strong class="block text-lg mb-1">1. Architect in Canvas</strong>
+                                        <span class="text-indigo-300 text-sm leading-relaxed block">Don't struggle with syntax in VS Code. Use Gemini Canvas to generate the logic, UI components, and TypeScript interfaces first where it's cheap to iterate.</span>
+                                    </li>
+                                    <li class="relative">
+                                        <strong class="block text-lg mb-1">2. Transplant to VS Code</strong>
+                                        <span class="text-indigo-300 text-sm leading-relaxed block">Copy the polished code block. Navigate to your project folder (e.g., <code class="bg-indigo-800 px-1 rounded text-xs font-mono">app/components/</code>) and paste it into a real file. This "locks in" the feature.</span>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="flex items-center justify-center opacity-50">
+                                <i class="fas fa-laptop-code text-9xl text-indigo-800"></i>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content: API Rule -->
+                        <div id="tab-api" class="hidden">
+                            <div class="bg-indigo-950/50 p-6 rounded-xl border border-indigo-800">
+                                <h3 class="font-bold text-indigo-200 mb-4 flex items-center gap-2">
+                                    <i class="fas fa-shield-alt text-green-400"></i> Why can't I just fetch() in the browser?
+                                </h3>
+                                
+                                <div class="space-y-6">
+                                    <!-- Concept 1: The CORS Guard -->
+                                    <div>
+                                        <h4 class="text-white font-bold text-sm mb-2">1. The Browser's Security Guard (CORS)</h4>
+                                        <p class="text-sm text-indigo-300 leading-relaxed mb-2">
+                                            Browsers enforce a strict rule called <strong>Same-Origin Policy</strong>. If your app is on <code>localhost:3000</code> and tries to talk to <code>okta.com</code>, the browser sees a stranger and blocks the call to prevent data theft.
+                                        </p>
+                                        <div class="bg-black/40 p-3 rounded-lg border border-red-900/50 font-mono text-xs text-red-300">
+                                            🚫 Blocked: Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource.
+                                        </div>
+                                    </div>
+
+                                    <!-- Concept 2: The Glass House -->
+                                    <div>
+                                        <h4 class="text-white font-bold text-sm mb-2">2. The "Glass House" Problem</h4>
+                                        <p class="text-sm text-indigo-300 leading-relaxed">
+                                            Anything running in the browser (Client Components) is visible to the user. If you put your <code>API_TOKEN</code> in a standard React component, any user can right-click "View Source" and steal your Super Admin credentials. <strong>Never do this.</strong>
+                                        </p>
+                                    </div>
+
+                                    <!-- Concept 3: The Server Solution -->
+                                    <div>
+                                        <h4 class="text-white font-bold text-sm mb-2">3. The Solution: Server Actions</h4>
+                                        <p class="text-sm text-indigo-300 leading-relaxed mb-3">
+                                            We use Next.js <strong>Server Actions</strong> to act as a secure proxy.
+                                        </p>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-start gap-3 text-xs text-indigo-200 bg-indigo-900/50 p-2 rounded">
+                                                <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
+                                                <span><strong>Browser talks to Server:</strong> Your frontend asks your <em>own</em> Next.js server to "Create User". This is allowed (Same Origin).</span>
+                                            </li>
+                                            <li class="flex items-start gap-3 text-xs text-indigo-200 bg-indigo-900/50 p-2 rounded">
+                                                <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
+                                                <span><strong>Server talks to Okta:</strong> Your Next.js server (running in a secure backend) uses the hidden API Token to call Okta. Servers don't have CORS restrictions.</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 2 -->
+            <section id="phase2" class="scroll-mt-24">
+                <div class="mb-12 text-center px-4">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-okta-midnight text-xl font-bold mb-4 shadow-sm">2</div>
+                    <h2 class="text-3xl font-bold text-okta-midnight">Enhanced Discovery Tool</h2>
+                    <p class="text-slate-500 mt-2 font-medium text-base">Add Intelligence to Your Checklist</p>
+                </div>
+                <div class="px-2 sm:px-4 space-y-8">
+
+                <!-- Phase 2 Checklist -->
+                <div class="section-shell mb-10">
+                    <h4 class="text-sm font-bold text-okta-midnight mb-4 uppercase tracking-wider flex items-center gap-3">
+                        <div class="w-6 h-6 rounded bg-green-100 text-green-600 flex items-center justify-center text-xs"><i class="fas fa-check"></i></div>
+                        Phase 2: Multi-File Project Setup – Checklist
+                    </h4>
+                    <div class="flex flex-col gap-2">
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step1" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Create new folder: okta-discovery-tool</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step2" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Open folder in VS Code (File > Open Folder)</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step3" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Create three files: index.html, discovery-logic.js, discovery-styles.css</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step4" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Paste the multi-file prompt into Gemini</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step5" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Copy Lab 1 HTML into index.html</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step6" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Add generated code to respective files</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step7" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Link JS and CSS files in HTML</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step8" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Open index.html in browser and test</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What We Are Building Section -->
+                <div class="section-shell mb-10">
+                    <h3 class="text-xl font-bold text-okta-midnight mb-6 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600 text-sm"><i class="fas fa-folder-open"></i></div>
+                        What We Are Building: Multi-File Project Structure
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                You will <strong>restructure</strong> your Discovery Checklist using proper file organization. Instead of one massive HTML file, you'll separate concerns into <strong>three focused files</strong>—the foundation of real-world development.
+                            </p>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                    <span class="text-slate-700"><strong>index.html:</strong> Structure and content (the Discovery Checklist UI)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                    <span class="text-slate-700"><strong>discovery-logic.js:</strong> Business logic (summary generation, checkbox reading, product mapping)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                    <span class="text-slate-700"><strong>discovery-styles.css:</strong> Visual styling (custom layouts, hover effects, responsive design)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                    <span class="text-slate-700"><strong>Why This Matters:</strong> Multi-file projects require VS Code. This is how professional developers work.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-6 border border-slate-200 flex flex-col gap-3 shadow-sm font-mono text-xs">
+                            <!-- File Tree Mockup -->
+                            <div class="flex items-center gap-2 border-b border-slate-300 pb-3 mb-2">
+                                <i class="fas fa-folder text-blue-500"></i>
+                                <span class="font-bold text-slate-800">okta-discovery-tool/</span>
+                            </div>
+                            <div class="space-y-2 pl-4">
+                                <div class="flex items-center gap-2 bg-white p-2 rounded border border-slate-200">
+                                    <i class="fas fa-file-code text-orange-500"></i>
+                                    <span class="text-slate-700">index.html</span>
+                                    <span class="ml-auto text-[10px] text-slate-400">Structure</span>
+                                </div>
+                                <div class="flex items-center gap-2 bg-white p-2 rounded border border-slate-200">
+                                    <i class="fab fa-js-square text-yellow-500"></i>
+                                    <span class="text-slate-700">discovery-logic.js</span>
+                                    <span class="ml-auto text-[10px] text-slate-400">Behavior</span>
+                                </div>
+                                <div class="flex items-center gap-2 bg-white p-2 rounded border border-slate-200">
+                                    <i class="fab fa-css3-alt text-blue-500"></i>
+                                    <span class="text-slate-700">discovery-styles.css</span>
+                                    <span class="ml-auto text-[10px] text-slate-400">Styling</span>
+                                </div>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-slate-300 text-[10px] text-slate-600">
+                                <i class="fas fa-info-circle text-blue-500"></i> Separation of concerns = easier maintenance
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Instructions -->
+                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-100 shadow-sm">
+                        <h4 class="font-bold text-okta-midnight mb-3 text-base flex items-center gap-2">
+                            <i class="fas fa-info-circle text-okta-blue"></i> How to Use This Lab
+                        </h4>
+                        <ol class="list-decimal list-inside text-sm text-okta-gray space-y-2">
+                            <li>Create a new folder called <strong>okta-discovery-tool</strong></li>
+                            <li>Open it in <strong>VS Code</strong> (File > Open Folder)</li>
+                            <li>Create three empty files: <code class="bg-white px-2 py-1 rounded text-xs">index.html</code>, <code class="bg-white px-2 py-1 rounded text-xs">discovery-logic.js</code>, <code class="bg-white px-2 py-1 rounded text-xs">discovery-styles.css</code></li>
+                            <li>Copy the prompt below and paste it into <strong>Gemini</strong></li>
+                            <li>Gemini will return <strong>THREE separate code blocks</strong> (JS, CSS, and HTML modifications)</li>
+                            <li>Paste your Lab 1 HTML into <strong>index.html</strong>, then add the modifications from Gemini</li>
+                            <li>Paste the JS code into <strong>discovery-logic.js</strong></li>
+                            <li>Paste the CSS code into <strong>discovery-styles.css</strong></li>
+                            <li>Add the <code class="bg-white px-2 py-1 rounded text-xs">&lt;script&gt;</code> and <code class="bg-white px-2 py-1 rounded text-xs">&lt;link&gt;</code> tags to your HTML (Gemini will show you where)</li>
+                            <li>Open <strong>index.html</strong> in your browser and test</li>
+                        </ol>
+                    </div>
+
+                    <!-- The Single Prompt -->
+                    <div class="code-block group bg-white p-6 rounded-lg border border-slate-200 relative shadow-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <h4 class="text-base font-bold text-okta-midnight">Lab 2 Prompt: Multi-File Discovery Enhancement</h4>
+                                <p class="text-xs text-okta-gray mt-1">Copy this entire prompt and paste into Gemini</p>
+                            </div>
+                            <button onclick="copyToClipboard(this)" class="copy-btn bg-slate-700 hover:bg-slate-600 text-xs text-white px-3 py-2 rounded transition-colors flex items-center gap-2">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code id="prompt-step-2-1" class="language-markdown prompt-text">Enhance the existing "Okta SE Discovery Checklist" by separating concerns into multiple files.
+
+I have three files:
+- index.html (contains the Discovery Checklist from Lab 1)
+- discovery-logic.js (empty - needs JavaScript)
+- discovery-styles.css (empty - needs CSS)
+
+Requirements:
+
+1) Create discovery-logic.js with:
+   - A function `generateDiscoverySummary()` that:
+     * Reads all checked checkboxes from the HTML
+     * Analyzes selections and generates intelligent text for 5 sections:
+       - What We Learned
+       - Risks / Gaps Identified
+       - Recommended Next Steps
+       - Suggested Okta Products (map checkboxes to products like OIG, LCM, OPA, Device Trust)
+       - Follow-Up Questions
+     * Uses IF/ELSE logic to map selections to recommendations:
+       - If "Entra ID" or "Active Directory" is checked → add competitive positioning note
+       - If "SCIM" or lifecycle items checked → recommend Lifecycle Management
+       - If governance items checked → recommend Okta Identity Governance
+       - If privileged access items checked → recommend Okta Privileged Access
+       - If device/posture items checked → recommend Device Trust / Assurance
+   - A function `copySummaryToClipboard()` for one-click copying
+   - Clear comments explaining each function
+
+2) Create discovery-styles.css with:
+   - Styles for a summary panel (card layout with sections)
+   - Product recommendation badges (colored pills)
+   - Hover effects and transitions
+   - Responsive mobile styles
+   - Use CSS Grid for the summary layout
+
+3) Provide HTML modifications to add:
+   - A "Generate Discovery Summary" button (styled)
+   - A summary panel container with 5 section divs (that JS will populate)
+   - Add `<script src="discovery-logic.js"></script>` before `</body>`
+   - Add `<link rel="stylesheet" href="discovery-styles.css">` in `<head>`
+
+Constraints:
+- Vanilla JavaScript only (no frameworks)
+- Keep the original checklist HTML intact
+- Use deterministic logic (no AI API calls)
+- Add clear comments in all code
+- Make it production-ready
+
+Return THREE separate code blocks labeled:
+1. **discovery-logic.js** (full file content)
+2. **discovery-styles.css** (full file content)
+3. **HTML Modifications** (only the new parts to add, with clear instructions on where to place them)</code></pre>
+                    </div>
+
+                    <!-- Expected Output Preview -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200 shadow-sm">
+                        <h4 class="font-bold text-green-800 mb-3 text-sm flex items-center gap-2">
+                            <i class="fas fa-lightbulb"></i> What You'll Get Back From Gemini
+                        </h4>
+                        <ul class="space-y-2 text-xs text-green-900">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 font-bold">📄</span>
+                                <span><strong>discovery-logic.js:</strong> Complete JavaScript file with summary generation logic and clipboard copying</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 font-bold">🎨</span>
+                                <span><strong>discovery-styles.css:</strong> Complete CSS file with modern card layouts, product badges, and responsive design</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 font-bold">🔗</span>
+                                <span><strong>HTML Modifications:</strong> Button HTML, summary panel structure, and link tags with clear placement instructions</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 pt-3 border-t border-green-300">
+                            <p class="text-xs text-green-800"><strong>Pro Tip:</strong> This multi-file structure teaches you real-world project organization. In Lab 3, you'll use VS Code's Live Preview and Copilot to enhance it further!</p>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="h-px bg-slate-200"></div>
+
+            <!-- INTERLUDE: The Vibe Lifecycle -->
+            <section id="workflow-lesson" class="scroll-mt-24">
+                <div class="section-shell">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-full bg-okta-midnight flex items-center justify-center shadow-md">
+                            <i class="fas fa-sync-alt text-white text-lg"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-okta-midnight">Lesson: The Vibe Lifecycle</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-6 relative">
+                        <!-- Connecting Line (Desktop) -->
+                        <div class="hidden md:block absolute top-12 left-0 w-full h-1 bg-slate-100 -z-10 transform -translate-y-1/2"></div>
+
+                        <!-- Step 1 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center relative hover:-translate-y-1 transition-transform duration-300">
+                            <div class="w-12 h-12 rounded-full bg-blue-50 text-okta-blue flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-white shadow-sm">
+                                <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <h3 class="font-bold text-okta-midnight mb-2">1. Define</h3>
+                            <p class="text-xs text-okta-gray">"The Prompt is the Spec"</p>
+                            <p class="text-xs text-slate-400 mt-2">Don't write code. Write the outcome. Be specific about behavior and style.</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center relative hover:-translate-y-1 transition-transform duration-300">
+                            <div class="w-12 h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-white shadow-sm">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <h3 class="font-bold text-okta-midnight mb-2">2. Generate</h3>
+                            <p class="text-xs text-okta-gray">"AI is the Junior Dev"</p>
+                            <p class="text-xs text-slate-400 mt-2">Let the LLM draft the heavy lifting. It handles the boilerplate and syntax.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center relative hover:-translate-y-1 transition-transform duration-300">
+                            <div class="w-12 h-12 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-white shadow-sm">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <h3 class="font-bold text-okta-midnight mb-2">3. Verify</h3>
+                            <p class="text-xs text-okta-gray">"You are the Senior Reviewer"</p>
+                            <p class="text-xs text-slate-400 mt-2">Test the code. Does it match the prompt? Is the UI broken? Does the API call fail?</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center relative hover:-translate-y-1 transition-transform duration-300">
+                            <div class="w-12 h-12 rounded-full bg-green-50 text-green-500 flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-white shadow-sm">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="font-bold text-okta-midnight mb-2">4. Refine</h3>
+                            <p class="text-xs text-okta-gray">"Feedback Loops"</p>
+                            <p class="text-xs text-slate-400 mt-2">Paste errors back into the prompt. Ask for styling tweaks. Iterate until it vibes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="h-px bg-slate-200"></div>
+
+            <!-- INTERLUDE: The Copilot Lesson -->
+            <section id="cursor-lesson" class="scroll-mt-24">
+                <div class="section-shell bg-purple-900 text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-12 opacity-10">
+                        <i class="fas fa-bolt text-9xl"></i>
+                    </div>
+
+                    <div class="relative z-10 space-y-8">
+                        <!-- Header -->
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center font-bold shadow-lg">
+                                <i class="fas fa-robot text-white"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-bold">Lesson: The Copilot Advantage</h2>
+                                <p class="text-xs text-purple-200 mt-1">
+                                    Rebuild the <span class="font-semibold">Okta User Generator</span> from Phase 2 in a fraction of the time.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <!-- Column 1: Mental Model -->
+                            <div class="space-y-4 md:col-span-1">
+                                <h3 class="font-bold text-purple-200 mb-1 text-sm">1. Mental Model: Tourist vs. Resident</h3>
+
+                                <div class="bg-purple-950/50 p-4 rounded-lg border border-purple-800 text-xs space-y-3">
+                                    <div>
+                                        <h4 class="font-bold text-red-300 mb-1 flex items-center gap-2">
+                                            <i class="fas fa-times-circle"></i> Web Chat (ChatGPT / Gemini)
+                                        </h4>
+                                        <p class="text-purple-300">
+                                            A <span class="font-semibold">Tourist</span> – it only sees what you paste. It can’t reliably know your
+                                            folder structure, local types, or imports. Great for exploring ideas, weaker for editing a real project.
+                                        </p>
+                                    </div>
+                                    <div class="border-t border-purple-800 pt-3">
+                                        <h4 class="font-bold text-green-400 mb-1 flex items-center gap-2">
+                                            <i class="fas fa-check-circle"></i> Copilot (Inside Your Repo)
+                                        </h4>
+                                        <p class="text-purple-300">
+                                            A <span class="font-semibold">Resident</span> – it scans your entire codebase. It knows about
+                                            <code class="bg-purple-800 px-1 rounded font-mono">app/types/okta.ts</code>,
+                                            <code class="bg-purple-800 px-1 rounded font-mono">app/actions/userActions.ts</code>, and your components.
+                                            When you say “update the User Generator,” it edits the right file.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-purple-950/60 p-3 rounded-lg border border-purple-800 text-xs">
+                                    <p class="text-purple-200 font-semibold mb-1 uppercase tracking-wider">
+                                        Goal of Lab 3
+                                    </p>
+                                    <p class="text-purple-300">
+                                        Take the <strong>same app</strong> from Phase 2 and rebuild it using
+                                        <strong>2–3 Composer prompts</strong> instead of manually pasting code between chat and VS Code.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Hands-On Steps -->
+                            <div class="space-y-4 md:col-span-1">
+                                <h3 class="font-bold text-purple-200 text-sm mb-1">2. Hands-On: The Composer Flow</h3>
+
+                                <!-- Step List -->
+                                <ol class="space-y-4 text-xs text-purple-100">
+                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
+                                        <p class="font-semibold mb-1">
+                                            Step 0 – Open the Project in VS Code
+                                        </p>
+                                        <ul class="list-disc list-inside space-y-1 text-purple-200">
+                                            <li>Open <strong>VS Code</strong> with Copilot installed.</li>
+                                            <li>Go to <code class="bg-purple-800 px-1 rounded font-mono">File &gt; Open...</code> and select your
+                                                <code class="bg-purple-800 px-1 rounded font-mono">okta-copilot-lab</code> folder.</li>
+                                            <li>Confirm you see <code class="bg-purple-800 px-1 rounded font-mono">app/</code> and
+                                                <code class="bg-purple-800 px-1 rounded font-mono">package.json</code> in the sidebar.</li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
+                                        <p class="font-semibold mb-1">
+                                            Step 1 – Tell Copilot the Big Picture
+                                        </p>
+                                        <p class="mb-1 text-purple-300">
+                                            Hit <kbd class="bg-purple-800 px-2 py-0.5 rounded font-mono">Cmd + I</kbd> from any file to open
+                                            <strong>Inline Chat</strong> or use the Chat Panel.
+                                        </p>
+                                        <p class="mb-1 text-purple-300">
+                                            Use a <strong>system-level prompt</strong> like:
+                                        </p>
+                                        <div class="bg-black/40 p-2 rounded border border-purple-700 font-mono">
+                                            <p class="text-[11px]">
+                                                &ldquo;You are a Principal Engineer helping me build an 'Okta User Generator' app in this repo.
+                                                Read the existing files first. Keep TypeScript and Tailwind. Prefer creating new files under
+                                                <code>app/</code> instead of inlining everything.&rdquo;
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
+                                        <p class="font-semibold mb-1">
+                                            Step 2 – Super Prompt: Infrastructure
+                                        </p>
+                                        <p class="mb-1 text-purple-300">
+                                            Paste <strong>Super Prompt 1</strong> from Phase 3 and run it in Composer.
+                                        </p>
+                                        <ul class="list-disc list-inside space-y-1 text-purple-200">
+                                            <li>Watch the <strong>file tree</strong> on the left – new files should appear under
+                                                <code class="bg-purple-800 px-1 rounded font-mono">app/</code>.</li>
+                                            <li>Use the diff view and skim the changes (don’t auto-trust).</li>
+                                            <li>Press <kbd class="bg-purple-800 px-2 py-0.5 rounded font-mono">Cmd + Y</kbd> to
+                                                <strong>Accept All</strong> once it looks sane.</li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
+                                        <p class="font-semibold mb-1">
+                                            Step 3 – Super Prompt: Logic & UI
+                                        </p>
+                                        <p class="mb-1 text-purple-300">
+                                            Now run <strong>Super Prompt 2</strong> to generate the Server Actions and UI.
+                                        </p>
+                                        <ul class="list-disc list-inside space-y-1 text-purple-200">
+                                            <li>Confirm it creates <code class="bg-purple-800 px-1 rounded font-mono">app/actions/userActions.ts</code>
+                                                and <code class="bg-purple-800 px-1 rounded font-mono">app/components/UserGenerator.tsx</code>.</li>
+                                            <li>Look for imports that reference files that don’t exist – if you see one, tell Copilot:
+                                                <span class="italic text-purple-100">“Fix broken imports and only use existing paths.”</span></li>
+                                            <li>Once clean, Accept All and run <code class="bg-purple-800 px-1 rounded font-mono">npm run dev</code>.</li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
+                                        <p class="font-semibold mb-1">
+                                            Step 4 – Verify in the Browser
+                                        </p>
+                                        <p class="text-purple-300">
+                                            Visit <code class="bg-purple-800 px-1 rounded font-mono">http://localhost:3000</code>.<br />
+                                            Try generating users. If something breaks, copy the error back into Copilot and say:
+                                            <span class="italic">“Fix this error without changing the API contract.”</span>
+                                        </p>
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <!-- Column 3: Patterns & Troubleshooting -->
+                            <div class="space-y-4 md:col-span-1">
+                                <h3 class="font-bold text-purple-200 text-sm mb-1">3. Patterns & Troubleshooting</h3>
+
+                                <!-- Good Prompt Patterns -->
+                                <div class="bg-purple-950/60 p-4 rounded-lg border border-purple-800 text-xs space-y-2">
+                                    <p class="font-semibold text-purple-100 uppercase tracking-wider text-[11px]">
+                                        Good Copilot Prompts
+                                    </p>
+                                    <ul class="list-disc list-inside text-purple-200 space-y-1">
+                                        <li><span class="font-semibold">“Read these files first:”</span> and list the key files.</li>
+                                        <li><span class="font-semibold">“Only touch files under app/ and app/components/.”</span></li>
+                                        <li><span class="font-semibold">“Keep the existing Okta types and config shape.”</span></li>
+                                        <li><span class="font-semibold">“Show me a diff summary before applying.”</span></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Common Failure Modes -->
+                                <div class="bg-purple-950/60 p-4 rounded-lg border border-purple-800 text-xs space-y-2">
+                                    <p class="font-semibold text-purple-100 uppercase tracking-wider text-[11px]">
+                                        Common Failure Modes
+                                    </p>
+                                    <ul class="list-disc list-inside text-purple-200 space-y-1">
+                                        <li>
+                                            <strong>Hallucinated paths:</strong> Copilot imports
+                                            <code class="bg-purple-800 px-1 rounded font-mono">~/components/Button</code> when it doesn’t exist.
+                                            Fix by saying: <span class="italic">“Only use relative paths from the app/ folder.”</span>
+                                        </li>
+                                        <li>
+                                            <strong>Server vs Client confusion:</strong> If you see
+                                            <code class="bg-purple-800 px-1 rounded font-mono">'use client'</code> at the top of a file that uses
+                                            secrets, ask: <span class="italic">“Move all API tokens and fetch logic into a Server Action.”</span>
+                                        </li>
+                                        <li>
+                                            <strong>Type errors everywhere:</strong> Ask Copilot:
+                                            <span class="italic">“Make the minimal TypeScript fixes needed to compile, but don’t change behavior.”</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Reflection -->
+                                <div class="bg-purple-950/60 p-4 rounded-lg border border-purple-800 text-xs">
+                                    <p class="font-semibold text-purple-100 mb-2">
+                                        Reflection Question (For SEs)
+                                    </p>
+                                    <p class="text-purple-200">
+                                        How much time did it take you to build the User Generator in <strong>Phase 2</strong> vs.
+                                        <strong>Phase 3 with Copilot</strong>? That delta is what your customers feel when you bring
+                                        AI-accelerated prototyping into their POCs.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="h-px bg-slate-200"></div>
+
+            <!-- Phase 3 -->
+            <section id="phase3" class="scroll-mt-24">
+                <div class="mb-8 sm:mb-12 text-center px-4">
+                    <div class="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-100 text-okta-midnight text-lg sm:text-xl font-bold mb-3 sm:mb-4 shadow-sm">3</div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-okta-midnight">VS Code Power Tools</h2>
+                    <p class="text-okta-gray mt-2 font-medium text-sm sm:text-base">Live Preview + Copilot Integration</p>
+                </div>
+
+                <div class="px-2 sm:px-4 space-y-8">
+
+                <!-- Phase 3 Checklist -->
+                <div class="section-shell mb-10">
+                    <h4 class="text-sm font-bold text-okta-midnight mb-4 uppercase tracking-wider flex items-center gap-3">
+                        <div class="w-6 h-6 rounded bg-green-100 text-green-600 flex items-center justify-center text-xs"><i class="fas fa-check"></i></div>
+                        Phase 3: VS Code Integration – Checklist
+                    </h4>
+                    <div class="flex flex-col gap-2">
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p3-step1" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Open your okta-discovery-tool folder in VS Code</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p3-step2" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Install the "Live Preview" extension</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p3-step3" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Right-click index.html → Show Preview (position side-by-side)</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p3-step4" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Open discovery-logic.js and ask GitHub Copilot to add improvements</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p3-step5" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Use Copilot Chat to explain complex functions</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p3-step6" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Test changes in Live Preview in real-time</span>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p3-step7" onclick="toggleCheck(this)">
+                            <i class="far fa-square text-slate-300 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-700">Debug any errors using Copilot Chat</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Col 1: The Context -->
+                    <div class="md:col-span-1 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border-l-4 border-purple-500 shadow-card">
+                            <h4 class="font-bold text-okta-midnight mb-3">What You'll Learn</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                You'll use <strong>VS Code's Live Preview extension</strong> to see your changes in real-time and <strong>GitHub Copilot</strong> to refine your code without leaving the editor.
+                                <br><br>
+                                This workflow combines <strong>instant feedback</strong> (Live Preview) with <strong>intelligent assistance</strong> (Copilot) to create a professional development experience.
+                            </p>
+                        </div>
+                        
+                        <!-- Shortcuts Card -->
+                        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 font-mono text-xs shadow-inner text-slate-200">
+                            <p class="text-slate-400 mb-4 font-bold uppercase tracking-wider flex items-center gap-2">
+                                <i class="fas fa-keyboard"></i> VS Code Shortcuts
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex justify-between items-center">
+                                    <span>Open Command Palette</span>
+                                    <kbd class="bg-slate-700 px-2 py-1 rounded text-white font-bold border-b-2 border-slate-600">Cmd + Shift + P</kbd>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>Copilot Chat</span>
+                                    <kbd class="bg-slate-700 px-2 py-1 rounded text-white font-bold border-b-2 border-slate-600">Cmd + I</kbd>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>Split Editor</span>
+                                    <kbd class="bg-slate-700 px-2 py-1 rounded text-white font-bold border-b-2 border-slate-600">Cmd + \</kbd>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>Navigate Between Files</span>
+                                    <kbd class="bg-slate-700 px-2 py-1 rounded text-white font-bold border-b-2 border-slate-600">Cmd + P</kbd>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Col 2: The Tasks -->
+                    <div class="md:col-span-2 space-y-8">
+                        
+                        <!-- Task 1: Live Preview Setup -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 relative shadow-card">
+                            <div class="flex justify-between text-xs text-slate-500 mb-3 uppercase font-bold tracking-wider">
+                                <span class="flex items-center gap-2"><i class="fas fa-eye text-blue-500"></i> Task 1: Live Preview Setup</span>
+                                <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded font-bold">Real-Time Testing</span>
+                            </div>
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h5 class="font-bold text-okta-midnight mb-2">Step 1: Install Live Preview Extension</h5>
+                                    <ol class="list-decimal list-inside space-y-1 text-xs ml-2">
+                                        <li>Open VS Code Extensions panel (<kbd class="bg-slate-100 px-1 rounded text-xs">Cmd + Shift + X</kbd>)</li>
+                                        <li>Search for "Live Preview" (by Microsoft)</li>
+                                        <li>Click "Install"</li>
+                                    </ol>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-okta-midnight mb-2">Step 2: Open Side-by-Side Preview</h5>
+                                    <ol class="list-decimal list-inside space-y-1 text-xs ml-2">
+                                        <li>Right-click on <code class="bg-slate-100 px-1 rounded">index.html</code> in the file explorer</li>
+                                        <li>Select "Show Preview"</li>
+                                        <li>Drag the preview tab to the right side of your screen</li>
+                                        <li>Now you can edit code and see changes instantly!</li>
+                                    </ol>
+                                </div>
+                                <div class="bg-green-50 border-l-4 border-green-400 p-3 rounded-r">
+                                    <p class="text-xs text-green-800"><strong>✓ Success Check:</strong> Make a small change to your HTML (like changing a heading). The preview should update automatically without refreshing.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task 2: Copilot Refinement -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 relative shadow-card">
+                            <div class="flex justify-between text-xs text-slate-500 mb-3 uppercase font-bold tracking-wider">
+                                <span class="flex items-center gap-2"><i class="fas fa-robot text-purple-500"></i> Task 2: Copilot Refinement</span>
+                                <span class="bg-purple-50 text-purple-600 px-2 py-0.5 rounded font-bold">AI-Assisted Coding</span>
+                            </div>
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h5 class="font-bold text-okta-midnight mb-2">Step 1: Improve Variable Names</h5>
+                                    <ol class="list-decimal list-inside space-y-1 text-xs ml-2">
+                                        <li>Open <code class="bg-slate-100 px-1 rounded">discovery-logic.js</code></li>
+                                        <li>Press <kbd class="bg-slate-100 px-1 rounded">Cmd + I</kbd> to open Copilot Chat</li>
+                                        <li>Ask: "Improve the variable names in this file to be more descriptive"</li>
+                                        <li>Review the suggestions and accept the ones that make sense</li>
+                                    </ol>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-okta-midnight mb-2">Step 2: Add Code Comments</h5>
+                                    <ol class="list-decimal list-inside space-y-1 text-xs ml-2">
+                                        <li>Select the <code class="bg-slate-100 px-1 rounded">generateDiscoverySummary()</code> function</li>
+                                        <li>Ask Copilot: "Add detailed comments explaining what this function does"</li>
+                                        <li>Accept the generated comments</li>
+                                    </ol>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-okta-midnight mb-2">Step 3: Explain Complex Logic</h5>
+                                    <ol class="list-decimal list-inside space-y-1 text-xs ml-2">
+                                        <li>Highlight any confusing section of code</li>
+                                        <li>Ask Copilot: "Explain what this code does in simple terms"</li>
+                                        <li>Read the explanation to understand the logic better</li>
+                                    </ol>
+                                </div>
+                                <div class="bg-purple-50 border-l-4 border-purple-400 p-3 rounded-r">
+                                    <p class="text-xs text-purple-800"><strong>💡 Pro Tip:</strong> Copilot can also debug errors! If you see an error in Live Preview, copy it and ask Copilot: "Fix this error: [paste error]"</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task 3: CSS Enhancement with Copilot -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 relative shadow-card">
+                            <div class="flex justify-between text-xs text-slate-500 mb-3 uppercase font-bold tracking-wider">
+                                <span class="flex items-center gap-2"><i class="fas fa-paint-brush text-pink-500"></i> Task 3: Style Enhancement</span>
+                                <span class="bg-pink-50 text-pink-600 px-2 py-0.5 rounded font-bold">Live CSS Updates</span>
+                            </div>
+                            <div class="space-y-4 text-sm text-slate-700">
+                                <div>
+                                    <h5 class="font-bold text-okta-midnight mb-2">Copilot-Assisted Styling</h5>
+                                    <ol class="list-decimal list-inside space-y-1 text-xs ml-2">
+                                        <li>Open <code class="bg-slate-100 px-1 rounded">discovery-styles.css</code></li>
+                                        <li>Ask Copilot: "Add smooth hover animations to all buttons"</li>
+                                        <li>Watch Live Preview update in real-time as you accept changes</li>
+                                        <li>Ask Copilot: "Make the summary panel more visually appealing with gradients"</li>
+                                        <li>Test the changes by interacting with the preview</li>
+                                    </ol>
+                                </div>
+                                <div class="bg-orange-50 border-l-4 border-orange-400 p-3 rounded-r">
+                                    <p class="text-xs text-orange-800"><strong>🎯 Challenge:</strong> Ask Copilot to add a dark mode toggle to your discovery tool and test it in Live Preview!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 border-t border-slate-800 py-12 mt-12">
+            <div class="page-shell">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-4">Key Takeaways</h3>
+                        <ul class="space-y-2 text-slate-400 text-sm">
+                            <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-2"></i> Context is King (Explain file structure).</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-2"></i> Iterate, Don't One-Shot.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-2"></i> Trust but Verify (Read imports/loops).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-4">Resources</h3>
+                        <ul class="space-y-2 text-slate-400 text-sm">
+                            <li><a href="#" class="hover:text-white transition-colors">Next.js Documentation</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Tailwind CSS Cheatsheet</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Gemini Prompting Guide</a></li>
+                        </ul>
+                    </div>
+                    <div class="text-slate-500 text-xs">
+                        <p>&copy; 2025 Okta Identity Lab.</p>
+                        <p class="mt-2">Created for Engineering Enablement.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- VIEW: Prerequisites Content -->
+    <div id="prereqs-view" class="hidden min-h-screen bg-slate-50">
+    <div class="page-shell py-12">
+            <div class="mb-12">
+                <button onclick="toggleView('main')" class="text-slate-500 hover:text-slate-900 mb-6 flex items-center gap-2 transition-colors font-semibold">
+                    <i class="fas fa-arrow-left"></i> Back to Lab
+                </button>
+                <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Pre-Flight <span class="text-blue-600">Checklist</span></h1>
+                <p class="text-xl text-slate-600">Ensure your development environment is primed before starting the workshop.</p>
+            </div>
+
+            <!-- Checklist Grid -->
+            <div class="grid gap-8">
+                <!-- Core Tools -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-box-open text-blue-600"></i> Core Tools
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold">VS Code</h3>
+                                <p class="text-sm text-slate-600 mb-2">The command center. Ensure you are on the latest version.</p>
+                                <div class="bg-slate-800 p-2 rounded text-xs font-mono text-white inline-block">code --version</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold">Node.js (LTS) & NPM</h3>
+                                <p class="text-sm text-slate-600 mb-2">Required for Next.js. Version 18.17.0 or later is strictly required.</p>
+                                <div class="bg-slate-800 p-2 rounded text-xs font-mono text-white inline-block">node -v && npm -v</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Package Managers -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-terminal text-blue-600"></i> Package Management
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <h3 class="text-slate-900 font-bold mb-2"><i class="fab fa-apple mr-2"></i>macOS / Linux</h3>
+                            <p class="text-sm text-slate-600 mb-3">Homebrew is essential for managing dependencies.</p>
+                            <code class="block bg-slate-800 p-3 rounded text-xs font-mono text-green-400 select-all overflow-x-auto">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <h3 class="text-slate-900 font-bold mb-2"><i class="fab fa-windows mr-2"></i>Windows</h3>
+                            <p class="text-sm text-slate-600 mb-3">Recommend using Winget or Chocolatey.</p>
+                            <code class="block bg-slate-800 p-3 rounded text-xs font-mono text-green-400 select-all overflow-x-auto">winget install -e --id Microsoft.VisualStudioCode</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extensions -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-puzzle-piece text-purple-600"></i> VS Code Extensions
+                    </h2>
+                    <p class="text-sm text-slate-600 mb-4">Install these to enable syntax highlighting and formatting for the Vibe Stack.</p>
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="p-3 border border-slate-200 rounded bg-slate-50 text-center hover:border-blue-500 hover:text-blue-600 transition-colors group">
+                            <span class="block font-bold text-slate-900 group-hover:text-blue-600">ESLint</span>
+                            <span class="text-xs text-slate-500">Linting</span>
+                        </div>
+                        <div class="p-3 border border-slate-200 rounded bg-slate-50 text-center hover:border-blue-500 hover:text-blue-600 transition-colors group">
+                            <span class="block font-bold text-slate-900 group-hover:text-blue-600">Prettier</span>
+                            <span class="text-xs text-slate-500">Formatting</span>
+                        </div>
+                        <div class="p-3 border border-slate-200 rounded bg-slate-50 text-center hover:border-blue-500 hover:text-blue-600 transition-colors group">
+                            <span class="block font-bold text-slate-900 group-hover:text-blue-600">Tailwind CSS</span>
+                            <span class="text-xs text-slate-500">IntelliSense</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW: Concepts Guide -->
+    <div id="concepts-view" class="hidden min-h-screen bg-slate-50">
+    <div class="page-shell py-12">
+            <div class="mb-12">
+                <button onclick="toggleView('main')" class="text-slate-500 hover:text-slate-900 mb-6 flex items-center gap-2 transition-colors font-semibold">
+                    <i class="fas fa-arrow-left"></i> Back to Lab
+                </button>
+                <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Concepts <span class="text-blue-600">Guide</span></h1>
+                <p class="text-xl text-slate-600">The "Why" behind the "What". Understanding the architecture of your toolkit.</p>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-card mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                    <i class="fas fa-sitemap text-purple-500"></i> The Architecture
+                </h2>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+                    
+                    <!-- Client -->
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 w-full md:w-1/3">
+                        <div class="text-3xl mb-2">💻</div>
+                        <h3 class="font-bold text-slate-900">Client (Browser)</h3>
+                        <p class="text-xs text-slate-600 mt-2">Your Dashboard UI. Runs React components.</p>
+                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-red-500 border border-red-200">
+                            🚫 Cannot call Okta API (CORS)
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-slate-300 text-2xl hidden md:block">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="text-slate-300 text-2xl md:hidden">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Server -->
+                    <div class="p-4 bg-green-50 rounded-lg border border-green-100 w-full md:w-1/3">
+                        <div class="text-3xl mb-2">⚙️</div>
+                        <h3 class="font-bold text-slate-900">Next.js Server</h3>
+                        <p class="text-xs text-slate-600 mt-2">Runs Server Actions. Hides API Token.</p>
+                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-green-600 border border-green-200">
+                            ✅ Proxy for API Calls
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-slate-300 text-2xl hidden md:block">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="text-slate-300 text-2xl md:hidden">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Okta -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 w-full md:w-1/3">
+                        <div class="text-3xl mb-2">☁️</div>
+                        <h3 class="font-bold text-slate-900">Okta API</h3>
+                        <p class="text-xs text-slate-600 mt-2">The Source of Truth.</p>
+                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-slate-500 border border-slate-200">
+                            /api/v1/users
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: CORS Deep Dive -->
+            <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-card mb-8">
+                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-red-500"></i> Deep Dive: What is CORS?
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                        <h3 class="font-bold text-sm text-slate-900 mb-3 flex items-center gap-2">
+                            <i class="fas fa-user-secret text-slate-400"></i> The Analogy: The ID Badge
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Imagine your browser is a strict security guard at an office building (Your App). You try to send a messenger to a completely different building across the street (Okta).
+                            <br><br>
+                            The security guard stops the messenger at the door because their ID badge says <strong>"Localhost"</strong>, but the other building only accepts badges from <strong>"Trusted Partners"</strong>.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-slate-900 mb-3">The Technical Reality</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            <strong>CORS (Cross-Origin Resource Sharing)</strong> is a browser security feature. It exists to prevent a malicious website (e.g., <code>evil.com</code>) from making background API calls to your bank (e.g., <code>bank.com</code>) using your logged-in session.
+                        </p>
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r text-xs text-red-800">
+                            <strong>Why it affects this Lab:</strong> <br>
+                            Okta's Management API is secure by default. It doesn't know about your local development environment (<code>localhost:3000</code>), so if the browser tries to call it directly, Okta blocks it.
+                            <br><br>
+                            <strong>The Fix:</strong> We move the request to the <strong>Next.js Server</strong> (Server Actions). Servers do not have CORS restrictions, so they can pass the request safely.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Tech Stack -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">The Tech Stack (The Tools)</h2>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">Next.js (The Framework)</h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>What:</strong> A production framework built on top of React. <br>
+                                <strong>Why:</strong> It handles the "boring stuff" like routing (URLs) and backend API proxies automatically. It lets us build a full-stack app in one folder without setting up a separate backend server.
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-blue-400 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">TypeScript (The Safety Net)</h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>What:</strong> JavaScript with strict rules. <br>
+                                <strong>Why:</strong> It prevents bugs before they happen. If you try to access <code>user.firsName</code> (typo), TypeScript yells at you in the editor so you don't break the app during a demo.
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-teal-400 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">Tailwind CSS (The Stylist)</h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>What:</strong> A utility-first styling library. <br>
+                                <strong>Why:</strong> Instead of writing a separate CSS file to center a box, you just write <code>class="flex justify-center"</code>. It speeds up UI building by 10x.
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-red-400 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">NPM (The App Store)</h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>What:</strong> Node Package Manager. <br>
+                                <strong>Why:</strong> It allows us to download pre-written code (libraries) like the Okta SDK or icon sets so we don't have to reinvent the wheel.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Directory Map -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-card">
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">Project Map (Where things live)</h2>
+                    <ul class="space-y-4 font-mono text-xs">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-yellow-100 p-1.5 rounded text-yellow-600"><i class="fas fa-folder"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block text-sm">app/</span>
+                                <span class="text-slate-500">The heart of the app. This folder <em>is</em> your router.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
+                            <div class="bg-blue-50 p-1.5 rounded text-blue-500"><i class="fas fa-file-code"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block">page.tsx</span>
+                                <span class="text-slate-500">The Home Page view (localhost:3000/). If you create <code>app/settings/page.tsx</code>, that becomes <code>/settings</code>.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
+                            <div class="bg-blue-50 p-1.5 rounded text-blue-500"><i class="fas fa-file-code"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block">layout.tsx</span>
+                                <span class="text-slate-500">The Wrapper. Code here (Navbar, Footer) appears on <em>every</em> page automatically.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
+                            <div class="bg-pink-50 p-1.5 rounded text-pink-500"><i class="fab fa-css3-alt"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block">globals.css</span>
+                                <span class="text-slate-500">Global styles. This is where Tailwind is imported and where you set root font sizes.</span>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start gap-3 mt-4">
+                            <div class="bg-purple-100 p-1.5 rounded text-purple-600"><i class="fas fa-server"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block text-sm">app/actions/</span>
+                                <span class="text-slate-500"><strong>Server Actions.</strong> Functions that run on the server to securely call Okta APIs. This is where we put the Okta API calls so the browser never sees the API Token.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-green-100 p-1.5 rounded text-green-600"><i class="fas fa-cubes"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block text-sm">app/components/</span>
+                                <span class="text-slate-500"><strong>UI Components.</strong> Reusable Lego bricks like <code>&lt;Button /&gt;</code> or <code>&lt;Card /&gt;</code> that we import into pages.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-purple-500 p-1.5 rounded text-white"><i class="fas fa-code"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block text-sm">app/types/</span>
+                                <span class="text-slate-500"><strong>Interfaces.</strong> Definitions of what data looks like (e.g., what an <code>OktaConfig</code> object contains).</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- New Section: Coding Concepts -->
+            <div class="mt-8 bg-white rounded-xl border border-slate-200 p-8 shadow-card">
+                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i class="fas fa-brain text-orange-500"></i> Coding Concepts for SEs
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">React Components</h3>
+                        <p class="text-xs text-slate-600">Think of these as <strong>Custom HTML Tags</strong>. Instead of writing 20 lines of HTML for a user card, you write <code>&lt;UserCard name="Alice" /&gt;</code>. It makes code readable and reusable.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">Props (Properties)</h3>
+                        <p class="text-xs text-slate-600">The <strong>Arguments</strong> passed to a component. In <code>&lt;UserCard name="Alice" /&gt;</code>, "name" is a prop. It allows the same component to display different data.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">State (useState)</h3>
+                        <p class="text-xs text-slate-600">The component's <strong>Short-term Memory</strong>. If you type in a text box or toggle a switch, that data is stored in "State". When State changes, the screen updates automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+:root {
+  --color-okta-midnight: #00297A;
+  --color-okta-blue: #3C71F7;
+  --color-okta-ice: #F8FAFC;
+  --color-okta-white: #FFFFFF;
+  --color-okta-text: #0F172A;
+  --color-okta-gray: #64748B;
+  --color-vibe-purple: #8B5CF6;
+  --color-vibe-pink: #EC4899;
+  --color-vibe-teal: #14B8A6;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-green-500: #10b981;
+  --color-red-500: #ef4444;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}

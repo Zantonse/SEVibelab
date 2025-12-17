@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concepts Guide - Okta Vibe Coding Lab</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-okta-ice text-okta-text font-sans antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 glass-panel mt-1.5">
+        <div class="page-shell">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo Area -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="bg-gradient-to-br from-slate-900 to-blue-600 p-2 rounded-lg shadow-lg">
+                        <i class="fas fa-code text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-extrabold text-slate-900 tracking-tight">Okta <span class="text-blue-600">Vibe</span></h1>
+                        <p class="text-[10px] text-slate-500 -mt-0.5">Coding Lab</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors">
+                        Main Lab
+                    </a>
+                    <a href="prerequisites.html" class="text-sm font-semibold text-slate-900 hover:text-blue-600 transition-colors">
+                        Prerequisites
+                    </a>
+                    <a href="concepts.html" class="text-sm font-semibold text-blue-600 border-b-2 border-blue-600">
+                        Concepts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Concepts Guide Content -->
+    <div class="min-h-screen">
+        <div class="page-shell py-12">
+            <div class="mb-12">
+                <a href="index.html" class="text-slate-500 hover:text-slate-900 mb-6 flex items-center gap-2 transition-colors font-semibold">
+                    <i class="fas fa-arrow-left"></i> Back to Lab
+                </a>
+                <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Concepts <span class="text-blue-600">Guide</span></h1>
+                <p class="text-xl text-slate-600">The "Why" behind the "What". Understanding the architecture of your toolkit.</p>
+            </div>
+
+            <div class="section-shell mb-10">
+                <div class="section-heading">
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Mindset</p>
+                        <h2 class="text-2xl font-bold text-okta-midnight">Concept Operating System</h2>
+                        <p class="text-sm text-slate-500 mt-2">Use this playbook to move from idea → prototype → production without context loss.</p>
+                    </div>
+                    <a href="index.html#phase2" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                        Jump into Phase 2 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="hero-grid">
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Canvas</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Narrate the Flow</h3>
+                        <p class="text-sm text-slate-500">Document the user's journey in plain English before touching code. Every prompt references this storyline.</p>
+                    </div>
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Next.js</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Codify the Story</h3>
+                        <p class="text-sm text-slate-500">Split the UI into composable sections and elevate reusable logic into components.</p>
+                    </div>
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Copilot</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Verify & Secure</h3>
+                        <p class="text-sm text-slate-500">Let Copilot refactor and add guardrails, then validate calls through Okta's API proxy.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-bolt text-okta-blue"></i><strong>4</strong> reusable prompts</span>
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-database text-okta-blue"></i><strong>2</strong> API touchpoints</span>
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-certificate text-okta-blue"></i><strong>100%</strong> Okta-aligned</span>
+                </div>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div class="section-shell mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                    <i class="fas fa-sitemap text-purple-500"></i> The Architecture
+                </h2>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+                    
+                    <!-- Client -->
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 w-full md:w-1/3">
+                        <div class="text-3xl mb-2">💻</div>
+                        <h3 class="font-bold text-slate-900">Client (Browser)</h3>
+                        <p class="text-xs text-slate-600 mt-2">Your Dashboard UI. Runs React components.</p>
+                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-red-500 border border-red-200">
+                            🚫 Cannot call Okta API (CORS)
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-slate-300 text-2xl hidden md:block">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="text-slate-300 text-2xl md:hidden">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Server -->
+                    <div class="p-4 bg-green-50 rounded-lg border border-green-100 w-full md:w-1/3">
+                        <div class="text-3xl mb-2">⚙️</div>
+                        <h3 class="font-bold text-slate-900">Next.js Server</h3>
+                        <p class="text-xs text-slate-600 mt-2">Runs Server Actions. Hides API Token.</p>
+                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-green-600 border border-green-200">
+                            ✅ Proxy for API Calls
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-slate-300 text-2xl hidden md:block">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="text-slate-300 text-2xl md:hidden">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Okta -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 w-full md:w-1/3">
+                        <div class="text-3xl mb-2">☁️</div>
+                        <h3 class="font-bold text-slate-900">Okta API</h3>
+                        <p class="text-xs text-slate-600 mt-2">The Source of Truth.</p>
+                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-slate-500 border border-slate-200">
+                            /api/v1/users
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CORS Deep Dive -->
+            <div class="section-shell mb-8">
+                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-red-500"></i> Deep Dive: What is CORS?
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                        <h3 class="font-bold text-sm text-slate-900 mb-3 flex items-center gap-2">
+                            <i class="fas fa-user-secret text-slate-400"></i> The Analogy: The ID Badge
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Imagine your browser is a strict security guard at an office building (Your App). You try to send a messenger to a completely different building across the street (Okta).
+                            <br><br>
+                            The security guard stops the messenger at the door because their ID badge says <strong>"Localhost"</strong>, but the other building only accepts badges from <strong>"Trusted Partners"</strong>.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-slate-900 mb-3">The Technical Reality</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            <strong>CORS (Cross-Origin Resource Sharing)</strong> is a browser security feature. It exists to prevent a malicious website (e.g., <code>evil.com</code>) from making background API calls to your bank (e.g., <code>bank.com</code>) using your logged-in session.
+                        </p>
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r text-xs text-red-800">
+                            <strong>Why it affects this Lab:</strong> <br>
+                            Okta's Management API is secure by default. It doesn't know about your local development environment (<code>localhost:3000</code>), so if the browser tries to call it directly, Okta blocks it.
+                            <br><br>
+                            <strong>The Fix:</strong> We move the request to the <strong>Next.js Server</strong> (Server Actions). Servers do not have CORS restrictions, so they can pass the request safely.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Tech Stack -->
+                <div class="section-shell h-full">
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">The Tech Stack (The Tools)</h2>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">Next.js (The Framework)</h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>What:</strong> A production framework built on top of React. <br>
+                                <strong>Why:</strong> It handles the "boring stuff" like routing (URLs) and backend API proxies automatically. It lets us build a full-stack app in one folder without setting up a separate backend server.
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-blue-400 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">TypeScript (The Safety Net)</h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>What:</strong> JavaScript with strict rules. <br>
+                                <strong>Why:</strong> It prevents bugs before they happen. If you try to access <code>user.firsName</code> (typo), TypeScript yells at you in the editor so you don't break the app during a demo.
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-teal-400 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">Tailwind CSS (The Stylist)</h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>What:</strong> A utility-first styling library. <br>
+                                <strong>Why:</strong> Instead of writing a separate CSS file to center a box, you just write <code>class="flex justify-center"</code>. It speeds up UI building by 10x.
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-red-400 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">NPM (The App Store)</h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>What:</strong> Node Package Manager. <br>
+                                <strong>Why:</strong> It allows us to download pre-written code (libraries) like the Okta SDK or icon sets so we don't have to reinvent the wheel.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Directory Map -->
+                <div class="section-shell h-full">
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">Project Map (Where things live)</h2>
+                    <ul class="space-y-4 font-mono text-xs">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-yellow-100 p-1.5 rounded text-yellow-600"><i class="fas fa-folder"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block text-sm">app/</span>
+                                <span class="text-slate-500">The heart of the app. This folder <em>is</em> your router.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
+                            <div class="bg-blue-50 p-1.5 rounded text-blue-500"><i class="fas fa-file-code"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block">page.tsx</span>
+                                <span class="text-slate-500">The Home Page view (localhost:3000/). If you create <code>app/settings/page.tsx</code>, that becomes <code>/settings</code>.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
+                            <div class="bg-blue-50 p-1.5 rounded text-blue-500"><i class="fas fa-file-code"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block">layout.tsx</span>
+                                <span class="text-slate-500">The Wrapper. Code here (Navbar, Footer) appears on <em>every</em> page automatically.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
+                            <div class="bg-pink-50 p-1.5 rounded text-pink-500"><i class="fab fa-css3-alt"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block">globals.css</span>
+                                <span class="text-slate-500">Global styles. This is where Tailwind is imported and where you set root font sizes.</span>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start gap-3 mt-4">
+                            <div class="bg-purple-100 p-1.5 rounded text-purple-600"><i class="fas fa-server"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block text-sm">app/actions/</span>
+                                <span class="text-slate-500"><strong>Server Actions.</strong> Functions that run on the server to securely call Okta APIs. This is where we put the Okta API calls so the browser never sees the API Token.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-green-100 p-1.5 rounded text-green-600"><i class="fas fa-cubes"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block text-sm">app/components/</span>
+                                <span class="text-slate-500"><strong>UI Components.</strong> Reusable Lego bricks like <code>&lt;Button /&gt;</code> or <code>&lt;Card /&gt;</code> that we import into pages.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-purple-500 p-1.5 rounded text-white"><i class="fas fa-code"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-700 block text-sm">app/types/</span>
+                                <span class="text-slate-500"><strong>Interfaces.</strong> Definitions of what data looks like (e.g., what an <code>OktaConfig</code> object contains).</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Coding Concepts -->
+            <div class="mt-8 section-shell">
+                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i class="fas fa-brain text-orange-500"></i> Coding Concepts for SEs
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">React Components</h3>
+                        <p class="text-xs text-slate-600">Think of these as <strong>Custom HTML Tags</strong>. Instead of writing 20 lines of HTML for a user card, you write <code>&lt;UserCard name="Alice" /&gt;</code>. It makes code readable and reusable.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">Props (Properties)</h3>
+                        <p class="text-xs text-slate-600">The <strong>Arguments</strong> passed to a component. In <code>&lt;UserCard name="Alice" /&gt;</code>, "name" is a prop. It allows the same component to display different data.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">State (useState)</h3>
+                        <p class="text-xs text-slate-600">The component's <strong>Short-term Memory</strong>. If you type in a text box or toggle a switch, that data is stored in "State". When State changes, the screen updates automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

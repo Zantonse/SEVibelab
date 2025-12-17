@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prerequisites - Okta Vibe Coding Lab</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-okta-ice text-okta-text font-sans antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 glass-panel mt-1.5">
+        <div class="page-shell">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo Area -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="bg-gradient-to-br from-slate-900 to-blue-600 p-2 rounded-lg shadow-lg">
+                        <i class="fas fa-code text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-extrabold text-slate-900 tracking-tight">Okta <span class="text-blue-600">Vibe</span></h1>
+                        <p class="text-[10px] text-slate-500 -mt-0.5">Coding Lab</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors">
+                        Main Lab
+                    </a>
+                    <a href="prerequisites.html" class="text-sm font-semibold text-blue-600 border-b-2 border-blue-600">
+                        Prerequisites
+                    </a>
+                    <a href="concepts.html" class="text-sm font-semibold text-slate-900 hover:text-blue-600 transition-colors">
+                        Concepts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Prerequisites Content -->
+    <div class="min-h-screen">
+        <div class="page-shell py-12">
+            <div class="mb-12">
+                <a href="index.html" class="text-slate-500 hover:text-slate-900 mb-6 flex items-center gap-2 transition-colors font-semibold">
+                    <i class="fas fa-arrow-left"></i> Back to Lab
+                </a>
+                <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Pre-Flight <span class="text-blue-600">Checklist</span></h1>
+                <p class="text-xl text-slate-600">Ensure your development environment is primed before starting the workshop.</p>
+            </div>
+
+            <div class="section-shell mb-10">
+                <div class="section-heading">
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Before You Build</p>
+                        <h2 class="text-2xl font-bold text-okta-midnight">Prime the Lab Environment</h2>
+                        <p class="text-sm text-slate-500 mt-2">Everything below keeps you from pausing mid-demo to install packages.</p>
+                    </div>
+                    <button onclick="window.open('https://github.com/github/copilot-docs','_blank')" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                        Copilot setup guide <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+                <div class="hero-grid">
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Devices</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">VS Code + Copilot</h3>
+                        <p class="text-sm text-slate-500">Verify you're signed into GitHub with access to Copilot and have the extension enabled.</p>
+                    </div>
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Connectivity</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Okta Org Ready</h3>
+                        <p class="text-sm text-slate-500">Have an API token generated and credentials stored in your secrets manager ahead of the lab.</p>
+                    </div>
+                    <div class="grid-card">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Toolchain</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Node + Package Manager</h3>
+                        <p class="text-sm text-slate-500">Lock to Node LTS (18.17+) and confirm npm/pnpm versions to avoid compile surprises.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-clock text-okta-blue"></i><strong>15 min</strong> total setup</span>
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-plug text-okta-blue"></i><strong>0</strong> blockers in lab</span>
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-user-lock text-okta-blue"></i><strong>Secure</strong> Okta posture</span>
+                </div>
+            </div>
+
+            <!-- Checklist Grid -->
+            <div class="grid gap-8">
+                <!-- Core Tools -->
+                <div class="section-shell">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-box-open text-blue-600"></i> Core Tools
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold">VS Code</h3>
+                                <p class="text-sm text-slate-600 mb-2">The command center. Ensure you are on the latest version.</p>
+                                <div class="bg-slate-800 p-2 rounded text-xs font-mono text-white inline-block">code --version</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold">Node.js (LTS) & NPM</h3>
+                                <p class="text-sm text-slate-600 mb-2">Required for Next.js. Version 18.17.0 or later is strictly required.</p>
+                                <div class="bg-slate-800 p-2 rounded text-xs font-mono text-white inline-block">node -v && npm -v</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Package Managers -->
+                <div class="section-shell">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-terminal text-blue-600"></i> Package Management
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <h3 class="text-slate-900 font-bold mb-2"><i class="fab fa-apple mr-2"></i>macOS / Linux</h3>
+                            <p class="text-sm text-slate-600 mb-3">Homebrew is essential for managing dependencies.</p>
+                            <code class="block bg-slate-800 p-3 rounded text-xs font-mono text-green-400 select-all overflow-x-auto">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <h3 class="text-slate-900 font-bold mb-2"><i class="fab fa-windows mr-2"></i>Windows</h3>
+                            <p class="text-sm text-slate-600 mb-3">Recommend using Winget or Chocolatey.</p>
+                            <code class="block bg-slate-800 p-3 rounded text-xs font-mono text-green-400 select-all overflow-x-auto">winget install -e --id Microsoft.VisualStudioCode</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extensions -->
+                <div class="section-shell">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-puzzle-piece text-purple-600"></i> VS Code Extensions
+                    </h2>
+                    <p class="text-sm text-slate-600 mb-4">Install these to enable syntax highlighting and formatting for the Vibe Stack.</p>
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="p-3 border border-slate-200 rounded bg-slate-50 text-center hover:border-blue-500 hover:text-blue-600 transition-colors group">
+                            <span class="block font-bold text-slate-900 group-hover:text-blue-600">ESLint</span>
+                            <span class="text-xs text-slate-500">Linting</span>
+                        </div>
+                        <div class="p-3 border border-slate-200 rounded bg-slate-50 text-center hover:border-blue-500 hover:text-blue-600 transition-colors group">
+                            <span class="block font-bold text-slate-900 group-hover:text-blue-600">Prettier</span>
+                            <span class="text-xs text-slate-500">Formatting</span>
+                        </div>
+                        <div class="p-3 border border-slate-200 rounded bg-slate-50 text-center hover:border-blue-500 hover:text-blue-600 transition-colors group">
+                            <span class="block font-bold text-slate-900 group-hover:text-blue-600">Tailwind CSS</span>
+                            <span class="text-xs text-slate-500">IntelliSense</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Assistants -->
+                <div class="section-shell">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-robot text-purple-600"></i> AI Coding Assistants
+                    </h2>
+                    <p class="text-sm text-slate-600 mb-4">Required for Phase 1 (Canvas) and Phase 2 (VS Code). Phase 3 uses Copilot's native AI.</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-4 border border-blue-200 rounded-lg bg-gradient-to-br from-blue-50 to-slate-50">
+                            <h3 class="text-slate-900 font-bold mb-2 flex items-center gap-2">
+                                <i class="fas fa-microchip"></i> GitHub Copilot
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-3">For <strong>Phase 1, 2 & 3</strong>. Install in VS Code: Extensions → GitHub Copilot.</p>
+                            <div class="bg-slate-900 text-white px-3 py-1 rounded text-xs inline-block">Required for Labs 1-3</div>
+                        </div>
+                        <div class="p-4 border border-purple-200 rounded-lg bg-gradient-to-br from-purple-50 to-slate-50 opacity-50">
+                            <h3 class="text-slate-900 font-bold mb-2 flex items-center gap-2">
+                                <i class="fas fa-wand-magic-sparkles"></i> Cursor IDE
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-3">Optional alternative. A VS Code fork with AI baked in.</p>
+                            <a href="https://cursor.sh" target="_blank" class="text-blue-600 underline text-xs">cursor.sh</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Okta Resources -->
+                <div class="section-shell">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-cloud text-blue-600"></i> Okta Resources
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <div class="mt-1 text-blue-600"><i class="fas fa-key"></i></div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold">Okta Org (Developer Edition)</h3>
+                                <p class="text-sm text-slate-600 mb-2">Sign up for a free forever developer tenant for labs.</p>
+                                <a href="https://developer.okta.com/signup/" target="_blank" class="text-blue-600 underline text-sm">developer.okta.com/signup</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <div class="mt-1 text-blue-600"><i class="fas fa-book"></i></div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold">Okta Management API Token</h3>
+                                <p class="text-sm text-slate-600 mb-2">Generate an API token from: <strong>Security → API → Tokens</strong></p>
+                                <p class="text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200 mt-2">⚠️ Store this securely. It grants full admin access to your org.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
