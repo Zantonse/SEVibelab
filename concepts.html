@@ -61,161 +61,164 @@
                     <i class="fas fa-arrow-left"></i> Back to Lab
                 </a>
                 <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Concepts <span class="text-blue-600">Guide</span></h1>
-                <p class="text-xl text-slate-600">The "Why" behind the "What". Understanding the architecture of your toolkit.</p>
+                <p class="text-xl text-slate-600">The "Why" behind the "What". Understanding how to build with AI and clean code structure.</p>
             </div>
 
             <div class="section-shell mb-10">
                 <div class="section-heading">
                     <div>
                         <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Mindset</p>
-                        <h2 class="text-2xl font-bold text-okta-midnight">Concept Operating System</h2>
-                        <p class="text-sm text-slate-500 mt-2">Use this playbook to move from idea → prototype → production without context loss.</p>
+                        <h2 class="text-2xl font-bold text-okta-midnight">The AI-Powered Workflow</h2>
+                        <p class="text-sm text-slate-500 mt-2">From idea to interactive tool using plain language prompts and progressive refinement.</p>
                     </div>
-                    <a href="index.html#phase2" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
-                        Jump into Phase 2 <i class="fas fa-arrow-right"></i>
+                    <a href="index.html#lab1" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                        Start Lab 1 <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 <div class="hero-grid">
                     <div class="grid-card">
-                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Canvas</p>
-                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Narrate the Flow</h3>
-                        <p class="text-sm text-slate-500">Document the user's journey in plain English before touching code. Every prompt references this storyline.</p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Lab 1: Gemini Canvas</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Prototype with Prompts</h3>
+                        <p class="text-sm text-slate-500">Use natural language to generate a fully functional checklist tool in seconds. Learn prompt engineering basics.</p>
                     </div>
                     <div class="grid-card">
-                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Next.js</p>
-                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Codify the Story</h3>
-                        <p class="text-sm text-slate-500">Split the UI into composable sections and elevate reusable logic into components.</p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Lab 2: File Structure</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Organize & Scale</h3>
+                        <p class="text-sm text-slate-500">Split monolithic HTML into clean files (HTML/CSS/JS). Understand separation of concerns and maintainability.</p>
                     </div>
                     <div class="grid-card">
-                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Copilot</p>
-                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Verify & Secure</h3>
-                        <p class="text-sm text-slate-500">Let Copilot refactor and add guardrails, then validate calls through Okta's API proxy.</p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Lab 3: VS Code Polish</p>
+                        <h3 class="text-lg font-bold text-okta-midnight mb-2">Refine & Comment</h3>
+                        <p class="text-sm text-slate-500">Use GitHub Copilot to add inline documentation and refine code. Preview in real-time with Live Preview.</p>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-3 mt-8">
-                    <span class="floating-stat text-okta-gray"><i class="fas fa-bolt text-okta-blue"></i><strong>4</strong> reusable prompts</span>
-                    <span class="floating-stat text-okta-gray"><i class="fas fa-database text-okta-blue"></i><strong>2</strong> API touchpoints</span>
-                    <span class="floating-stat text-okta-gray"><i class="fas fa-certificate text-okta-blue"></i><strong>100%</strong> Okta-aligned</span>
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-sparkles text-okta-blue"></i><strong>Zero</strong> frameworks needed</span>
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-bolt text-okta-blue"></i><strong>15</strong> minute build time</span>
+                    <span class="floating-stat text-okta-gray"><i class="fas fa-toolbox text-okta-blue"></i><strong>100%</strong> reusable for demos</span>
                 </div>
             </div>
 
-            <!-- Architecture Diagram -->
+            <!-- File Structure -->
             <div class="section-shell mb-8">
                 <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                    <i class="fas fa-sitemap text-purple-500"></i> The Architecture
+                    <i class="fas fa-folder-tree text-purple-500"></i> The File Structure Journey
                 </h2>
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
                     
-                    <!-- Client -->
-                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 w-full md:w-1/3">
-                        <div class="text-3xl mb-2">💻</div>
-                        <h3 class="font-bold text-slate-900">Client (Browser)</h3>
-                        <p class="text-xs text-slate-600 mt-2">Your Dashboard UI. Runs React components.</p>
-                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-red-500 border border-red-200">
-                            🚫 Cannot call Okta API (CORS)
+                    <!-- Single File -->
+                    <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200 w-full md:w-1/3">
+                        <div class="text-3xl mb-2">�</div>
+                        <h3 class="font-bold text-slate-900">Lab 1: Single File</h3>
+                        <p class="text-xs text-slate-600 mt-2">Everything in one HTML file. Quick to prototype, hard to maintain.</p>
+                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-orange-600 border border-orange-200">
+                            ⚠️ 500+ lines in one file
                         </div>
                     </div>
 
                     <!-- Arrow -->
                     <div class="text-slate-300 text-2xl hidden md:block">
-                        <i class="fas fa-exchange-alt"></i>
+                        <i class="fas fa-arrow-right"></i>
                     </div>
                     <div class="text-slate-300 text-2xl md:hidden">
                         <i class="fas fa-arrow-down"></i>
                     </div>
 
-                    <!-- Server -->
+                    <!-- Multi-File -->
                     <div class="p-4 bg-green-50 rounded-lg border border-green-100 w-full md:w-1/3">
-                        <div class="text-3xl mb-2">⚙️</div>
-                        <h3 class="font-bold text-slate-900">Next.js Server</h3>
-                        <p class="text-xs text-slate-600 mt-2">Runs Server Actions. Hides API Token.</p>
+                        <div class="text-3xl mb-2">📁</div>
+                        <h3 class="font-bold text-slate-900">Lab 2: Multi-File</h3>
+                        <p class="text-xs text-slate-600 mt-2">Separate HTML, CSS, and JS files. Clean and organized.</p>
                         <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-green-600 border border-green-200">
-                            ✅ Proxy for API Calls
+                            ✅ Separation of concerns
                         </div>
                     </div>
 
                     <!-- Arrow -->
                     <div class="text-slate-300 text-2xl hidden md:block">
-                        <i class="fas fa-exchange-alt"></i>
+                        <i class="fas fa-arrow-right"></i>
                     </div>
                     <div class="text-slate-300 text-2xl md:hidden">
                         <i class="fas fa-arrow-down"></i>
                     </div>
 
-                    <!-- Okta -->
-                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 w-full md:w-1/3">
-                        <div class="text-3xl mb-2">☁️</div>
-                        <h3 class="font-bold text-slate-900">Okta API</h3>
-                        <p class="text-xs text-slate-600 mt-2">The Source of Truth.</p>
-                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-slate-500 border border-slate-200">
-                            /api/v1/users
+                    <!-- Enhanced -->
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 w-full md:w-1/3">
+                        <div class="text-3xl mb-2">✨</div>
+                        <h3 class="font-bold text-slate-900">Lab 3: Enhanced</h3>
+                        <p class="text-xs text-slate-600 mt-2">Add comments, refine code, preview live. Production-ready.</p>
+                        <div class="mt-3 text-xs font-mono bg-white p-1 rounded text-blue-600 border border-blue-200">
+                            🚀 Demo-ready quality
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- CORS Deep Dive -->
+            <!-- Why Separate Files -->
             <div class="section-shell mb-8">
                 <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                    <i class="fas fa-shield-alt text-red-500"></i> Deep Dive: What is CORS?
+                    <i class="fas fa-layer-group text-blue-500"></i> Deep Dive: Why Separate Files?
                 </h2>
                 <div class="grid md:grid-cols-2 gap-12">
                     <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
                         <h3 class="font-bold text-sm text-slate-900 mb-3 flex items-center gap-2">
-                            <i class="fas fa-user-secret text-slate-400"></i> The Analogy: The ID Badge
+                            <i class="fas fa-book text-slate-400"></i> The Analogy: The Recipe Book
                         </h3>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            Imagine your browser is a strict security guard at an office building (Your App). You try to send a messenger to a completely different building across the street (Okta).
+                            Imagine cooking a complex meal. You could write everything on one napkin: ingredients, cooking steps, presentation tips.
                             <br><br>
-                            The security guard stops the messenger at the door because their ID badge says <strong>"Localhost"</strong>, but the other building only accepts badges from <strong>"Trusted Partners"</strong>.
+                            But it's much cleaner to have three separate sections: <strong>Ingredients</strong> (HTML structure), <strong>Cooking Steps</strong> (JavaScript logic), and <strong>Plating Guide</strong> (CSS styling).
+                            <br><br>
+                            When you need to change the presentation, you only touch the plating guide - not the whole recipe!
                         </p>
                     </div>
                     <div>
                         <h3 class="font-bold text-sm text-slate-900 mb-3">The Technical Reality</h3>
                         <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                            <strong>CORS (Cross-Origin Resource Sharing)</strong> is a browser security feature. It exists to prevent a malicious website (e.g., <code>evil.com</code>) from making background API calls to your bank (e.g., <code>bank.com</code>) using your logged-in session.
+                            <strong>Separation of Concerns</strong> is a fundamental principle in software development. Each file has one clear responsibility:
                         </p>
-                        <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r text-xs text-red-800">
-                            <strong>Why it affects this Lab:</strong> <br>
-                            Okta's Management API is secure by default. It doesn't know about your local development environment (<code>localhost:3000</code>), so if the browser tries to call it directly, Okta blocks it.
-                            <br><br>
-                            <strong>The Fix:</strong> We move the request to the <strong>Next.js Server</strong> (Server Actions). Servers do not have CORS restrictions, so they can pass the request safely.
+                        <div class="space-y-3">
+                            <div class="bg-orange-50 border-l-4 border-orange-400 p-3 rounded-r text-xs">
+                                <strong>HTML (Structure):</strong> The skeleton. Defines what elements exist (buttons, cards, inputs).
+                            </div>
+                            <div class="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r text-xs">
+                                <strong>CSS (Styling):</strong> The skin. Defines how elements look (colors, spacing, animations).
+                            </div>
+                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded-r text-xs">
+                                <strong>JavaScript (Behavior):</strong> The muscles. Defines what happens when users interact (clicks, form submissions).
+                            </div>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-r text-xs text-green-800 mt-4">
+                            <strong>💡 Why it matters for SEs:</strong> When demoing to customers, you'll need to update UI colors or add features quickly. With separate files, you can confidently edit <code>styles.css</code> without breaking the logic in <code>app.js</code>.
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Tech Stack -->
+                <!-- AI Tools -->
                 <div class="section-shell h-full">
-                    <h2 class="text-xl font-bold text-slate-900 mb-4">The Tech Stack (The Tools)</h2>
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">AI Tools (Your Co-Pilots)</h2>
                     <div class="space-y-6">
-                        <div class="border-l-4 border-blue-500 pl-4">
-                            <h3 class="font-bold text-sm text-slate-900">Next.js (The Framework)</h3>
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">Google Gemini (The Generator)</h3>
                             <p class="text-xs text-slate-600 mt-1">
-                                <strong>What:</strong> A production framework built on top of React. <br>
-                                <strong>Why:</strong> It handles the "boring stuff" like routing (URLs) and backend API proxies automatically. It lets us build a full-stack app in one folder without setting up a separate backend server.
+                                <strong>What:</strong> A conversational AI that generates complete code from natural language prompts. <br>
+                                <strong>Why:</strong> You describe what you want ("create a checklist with 5 sections and a summary button"), and Gemini writes the HTML, CSS, and JavaScript for you. Perfect for rapid prototyping.
                             </p>
                         </div>
                         <div class="border-l-4 border-blue-400 pl-4">
-                            <h3 class="font-bold text-sm text-slate-900">TypeScript (The Safety Net)</h3>
+                            <h3 class="font-bold text-sm text-slate-900">GitHub Copilot (The Refiner)</h3>
                             <p class="text-xs text-slate-600 mt-1">
-                                <strong>What:</strong> JavaScript with strict rules. <br>
-                                <strong>Why:</strong> It prevents bugs before they happen. If you try to access <code>user.firsName</code> (typo), TypeScript yells at you in the editor so you don't break the app during a demo.
+                                <strong>What:</strong> An AI assistant built into VS Code that suggests code completions and improvements. <br>
+                                <strong>Why:</strong> While you're editing, Copilot can add inline comments, suggest better variable names, or autocomplete repetitive code patterns. It helps make your code production-ready.
                             </p>
                         </div>
-                        <div class="border-l-4 border-teal-400 pl-4">
-                            <h3 class="font-bold text-sm text-slate-900">Tailwind CSS (The Stylist)</h3>
+                        <div class="border-l-4 border-green-400 pl-4">
+                            <h3 class="font-bold text-sm text-slate-900">Live Preview (The Tester)</h3>
                             <p class="text-xs text-slate-600 mt-1">
-                                <strong>What:</strong> A utility-first styling library. <br>
-                                <strong>Why:</strong> Instead of writing a separate CSS file to center a box, you just write <code>class="flex justify-center"</code>. It speeds up UI building by 10x.
-                            </p>
-                        </div>
-                        <div class="border-l-4 border-red-400 pl-4">
-                            <h3 class="font-bold text-sm text-slate-900">NPM (The App Store)</h3>
-                            <p class="text-xs text-slate-600 mt-1">
-                                <strong>What:</strong> Node Package Manager. <br>
-                                <strong>Why:</strong> It allows us to download pre-written code (libraries) like the Okta SDK or icon sets so we don't have to reinvent the wheel.
+                                <strong>What:</strong> A VS Code extension that shows your HTML page in a live browser window. <br>
+                                <strong>Why:</strong> Every time you save a file, the preview updates instantly. No need to manually refresh your browser - see changes in real-time as you code.
                             </p>
                         </div>
                     </div>
@@ -223,56 +226,43 @@
 
                 <!-- Directory Map -->
                 <div class="section-shell h-full">
-                    <h2 class="text-xl font-bold text-slate-900 mb-4">Project Map (Where things live)</h2>
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">Project Structure (Lab 2 & 3)</h2>
                     <ul class="space-y-4 font-mono text-xs">
                         <li class="flex items-start gap-3">
-                            <div class="bg-yellow-100 p-1.5 rounded text-yellow-600"><i class="fas fa-folder"></i></div>
+                            <div class="bg-orange-100 p-1.5 rounded text-orange-600"><i class="fas fa-file-code"></i></div>
                             <div>
-                                <span class="font-bold text-slate-700 block text-sm">app/</span>
-                                <span class="text-slate-500">The heart of the app. This folder <em>is</em> your router.</span>
+                                <span class="font-bold text-slate-700 block text-sm">index.html</span>
+                                <span class="text-slate-500">The main structure. Contains the checklist sections, buttons, and content containers. Links to CSS and JS files.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
-                            <div class="bg-blue-50 p-1.5 rounded text-blue-500"><i class="fas fa-file-code"></i></div>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-blue-100 p-1.5 rounded text-blue-600"><i class="fab fa-css3-alt"></i></div>
                             <div>
-                                <span class="font-bold text-slate-700 block">page.tsx</span>
-                                <span class="text-slate-500">The Home Page view (localhost:3000/). If you create <code>app/settings/page.tsx</code>, that becomes <code>/settings</code>.</span>
+                                <span class="font-bold text-slate-700 block text-sm">styles.css</span>
+                                <span class="text-slate-500">All the visual styling. Colors, fonts, spacing, animations. Change this file to rebrand the tool for different customers.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
-                            <div class="bg-blue-50 p-1.5 rounded text-blue-500"><i class="fas fa-file-code"></i></div>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-yellow-100 p-1.5 rounded text-yellow-600"><i class="fab fa-js"></i></div>
                             <div>
-                                <span class="font-bold text-slate-700 block">layout.tsx</span>
-                                <span class="text-slate-500">The Wrapper. Code here (Navbar, Footer) appears on <em>every</em> page automatically.</span>
+                                <span class="font-bold text-slate-700 block text-sm">app.js</span>
+                                <span class="text-slate-500">Interactive logic. Handles checkbox clicks, generates summaries, copies text to clipboard. The "brain" of the tool.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 pl-4 border-l border-slate-200 ml-3">
-                            <div class="bg-pink-50 p-1.5 rounded text-pink-500"><i class="fab fa-css3-alt"></i></div>
-                            <div>
-                                <span class="font-bold text-slate-700 block">globals.css</span>
-                                <span class="text-slate-500">Global styles. This is where Tailwind is imported and where you set root font sizes.</span>
-                            </div>
-                        </li>
-                        
                         <li class="flex items-start gap-3 mt-4">
-                            <div class="bg-purple-100 p-1.5 rounded text-purple-600"><i class="fas fa-server"></i></div>
+                            <div class="bg-green-100 p-1.5 rounded text-green-600"><i class="fas fa-link"></i></div>
                             <div>
-                                <span class="font-bold text-slate-700 block text-sm">app/actions/</span>
-                                <span class="text-slate-500"><strong>Server Actions.</strong> Functions that run on the server to securely call Okta APIs. This is where we put the Okta API calls so the browser never sees the API Token.</span>
+                                <span class="font-bold text-slate-700 block text-sm">Linking Files</span>
+                                <span class="text-slate-500">In <code>index.html</code>, add:<br>
+                                <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code><br>
+                                <code>&lt;script src="app.js"&gt;&lt;/script&gt;</code></span>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <div class="bg-green-100 p-1.5 rounded text-green-600"><i class="fas fa-cubes"></i></div>
+                            <div class="bg-purple-100 p-1.5 rounded text-purple-600"><i class="fas fa-database"></i></div>
                             <div>
-                                <span class="font-bold text-slate-700 block text-sm">app/components/</span>
-                                <span class="text-slate-500"><strong>UI Components.</strong> Reusable Lego bricks like <code>&lt;Button /&gt;</code> or <code>&lt;Card /&gt;</code> that we import into pages.</span>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-purple-500 p-1.5 rounded text-white"><i class="fas fa-code"></i></div>
-                            <div>
-                                <span class="font-bold text-slate-700 block text-sm">app/types/</span>
-                                <span class="text-slate-500"><strong>Interfaces.</strong> Definitions of what data looks like (e.g., what an <code>OktaConfig</code> object contains).</span>
+                                <span class="font-bold text-slate-700 block text-sm">localStorage</span>
+                                <span class="text-slate-500">Browser's built-in storage. Save checkbox states so they persist when you close/reopen the page. No backend needed!</span>
                             </div>
                         </li>
                     </ul>
@@ -286,16 +276,53 @@
                 </h2>
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="p-4 bg-slate-50 rounded-lg">
-                        <h3 class="font-bold text-slate-900 mb-2 text-sm">React Components</h3>
-                        <p class="text-xs text-slate-600">Think of these as <strong>Custom HTML Tags</strong>. Instead of writing 20 lines of HTML for a user card, you write <code>&lt;UserCard name="Alice" /&gt;</code>. It makes code readable and reusable.</p>
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">DOM (Document Object Model)</h3>
+                        <p class="text-xs text-slate-600">Think of this as the <strong>Live Map</strong> of your HTML page. JavaScript uses <code>document.getElementById()</code> to find and manipulate elements (like checking a checkbox or updating text).</p>
                     </div>
                     <div class="p-4 bg-slate-50 rounded-lg">
-                        <h3 class="font-bold text-slate-900 mb-2 text-sm">Props (Properties)</h3>
-                        <p class="text-xs text-slate-600">The <strong>Arguments</strong> passed to a component. In <code>&lt;UserCard name="Alice" /&gt;</code>, "name" is a prop. It allows the same component to display different data.</p>
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">Event Listeners</h3>
+                        <p class="text-xs text-slate-600">The <strong>Watchers</strong> that trigger code when users interact. <code>addEventListener('click', handleClick)</code> runs the <code>handleClick</code> function whenever someone clicks a button.</p>
                     </div>
                     <div class="p-4 bg-slate-50 rounded-lg">
-                        <h3 class="font-bold text-slate-900 mb-2 text-sm">State (useState)</h3>
-                        <p class="text-xs text-slate-600">The component's <strong>Short-term Memory</strong>. If you type in a text box or toggle a switch, that data is stored in "State". When State changes, the screen updates automatically.</p>
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm">localStorage</h3>
+                        <p class="text-xs text-slate-600">The browser's <strong>Memory Box</strong>. Save data that persists even when the page is closed: <code>localStorage.setItem('checked', 'true')</code>. Perfect for saving user preferences!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prompt Engineering Tips -->
+            <div class="mt-8 section-shell bg-gradient-to-br from-purple-50 to-blue-50">
+                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i class="fas fa-wand-magic-sparkles text-purple-500"></i> Prompt Engineering Best Practices
+                </h2>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border border-purple-100">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm flex items-center gap-2">
+                            <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs">1</span> Be Specific About Structure
+                        </h3>
+                        <p class="text-xs text-slate-600 mb-2"><strong>❌ Bad:</strong> "Create a checklist"</p>
+                        <p class="text-xs text-slate-600"><strong>✅ Good:</strong> "Create an HTML checklist with 5 sections, each section has a title and 4 checkboxes, and add a summary button at the bottom"</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-blue-100">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm flex items-center gap-2">
+                            <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">2</span> Describe Behavior Clearly
+                        </h3>
+                        <p class="text-xs text-slate-600 mb-2"><strong>❌ Bad:</strong> "Add a save feature"</p>
+                        <p class="text-xs text-slate-600"><strong>✅ Good:</strong> "When a checkbox is clicked, save its state to localStorage. When the page loads, check localStorage and restore all previously checked boxes"</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-green-100">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm flex items-center gap-2">
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">3</span> Specify Styling Preferences
+                        </h3>
+                        <p class="text-xs text-slate-600 mb-2"><strong>❌ Bad:</strong> "Make it look nice"</p>
+                        <p class="text-xs text-slate-600"><strong>✅ Good:</strong> "Use a modern design with rounded corners, blue accent colors (#0061f2), subtle shadows, and responsive layout that works on mobile"</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-orange-100">
+                        <h3 class="font-bold text-slate-900 mb-2 text-sm flex items-center gap-2">
+                            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">4</span> Request Complete Code
+                        </h3>
+                        <p class="text-xs text-slate-600 mb-2"><strong>💡 Tip:</strong> Always ask for "complete, working code" to avoid getting snippets with placeholders</p>
+                        <p class="text-xs text-slate-600"><strong>✅ Example:</strong> "Generate the complete HTML file with inline CSS and JavaScript, ready to save and open in a browser"</p>
                     </div>
                 </div>
             </div>
