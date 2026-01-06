@@ -231,46 +231,70 @@
                     </div>
 
                     <div class="space-y-8">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl font-bold shadow-md flex-shrink-0">1</div>
-                            <h3 class="text-2xl font-bold text-okta-midnight">Discovery Call Toolkit</h3>
-                        </div>
-
-                        <!-- Scenario Info -->
-                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
-                            <div class="text-center">
-                                <span class="text-xs uppercase tracking-wider text-slate-500 font-bold block mb-2">Your Challenge</span>
-                                <span id="scenario-title" class="text-okta-midnight font-bold text-xl block mb-3">Okta SE Discovery Checklist</span>
-                                <p id="scenario-desc" class="text-slate-600 text-sm italic">
-                                    Build a structured discovery tool for qualifying Okta opportunities during customer calls.
-                                </p>
-                            </div>
-                        </div>
-
                         <div class="space-y-6">
                             <!-- Step 0 -->
                             <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
                                 <h4 class="text-lg font-bold text-okta-midnight mb-3 flex items-center gap-2">
-                                    <i class="fas fa-wrench text-okta-blue"></i> Step 0: Setup
+                                    <i class="fas fa-wrench text-okta-blue"></i> Step 0: Setup (First-Time Users)
                                 </h4>
                                 <p class="text-slate-600 mb-4">
-                                    Before we begin, we need to activate our workspace.
+                                    Before we begin, you need to enable Gemini's Canvas feature. This only needs to be done once.
                                 </p>
-                                <ul class="list-disc list-inside text-slate-600 space-y-2 ml-2">
-                                    <li>Open Gemini</li>
-                                    <li>Go to <strong>Tools</strong> (usually in the sidebar or settings)</li>
-                                    <li>Add/Enable the <strong>Canvas</strong> tool</li>
-                                </ul>
+                                <div class="space-y-3">
+                                    <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                        <h5 class="font-bold text-okta-midnight mb-2 text-sm">What is Gemini Canvas?</h5>
+                                        <p class="text-xs text-slate-600">
+                                            Canvas is a special mode in Gemini that's designed for creating and editing code. 
+                                            Instead of just chatting, Canvas gives you a dedicated workspace where Gemini can 
+                                            generate complete files (like HTML pages) that you can easily copy and use.
+                                        </p>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                        <h5 class="font-bold text-okta-midnight mb-2 text-sm">How to Enable Canvas:</h5>
+                                        <ol class="list-decimal list-inside text-xs text-slate-600 space-y-2 ml-4">
+                                            <li>Open <a href="https://gemini.google.com" target="_blank" class="text-blue-600 underline hover:text-blue-800">gemini.google.com</a> in your browser</li>
+                                            <li>Log in with your Google account (if you're not already logged in)</li>
+                                            <li>Look for the <strong>Tools</strong> or <strong>Extensions</strong> icon (usually in the sidebar, looks like a puzzle piece or wrench)</li>
+                                            <li>Find <strong>"Canvas"</strong> in the list of available tools</li>
+                                            <li>Toggle it to <strong>ON</strong> or click <strong>"Add"</strong></li>
+                                        </ol>
+                                        <div class="mt-3 p-2 bg-green-50 rounded border border-green-200">
+                                            <p class="text-xs text-green-800">
+                                                <strong>✓ Success Check:</strong> You'll know it's working when you see "Canvas" appear 
+                                                as an available option in Gemini's interface. You might see a canvas icon or menu item.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-yellow-50 p-3 rounded border-l-4 border-yellow-400">
+                                        <p class="text-xs text-yellow-800">
+                                            <strong>💡 Note:</strong> If you don't see the Canvas tool, it might not be available in your region yet. 
+                                            You can still complete this lab - just paste the prompt into regular Gemini chat and copy the code it generates!
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Step 1 -->
                             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm transition-all duration-300 hover:border-okta-blue/50 hover:shadow-md">
                                 <h4 class="text-lg font-bold text-okta-midnight mb-3 flex items-center gap-2">
-                                    <i class="fas fa-terminal text-okta-blue"></i> The Prompt
+                                    <i class="fas fa-terminal text-okta-blue"></i> Step 1: Generate Your Discovery Tool
                                 </h4>
                                 <p class="text-slate-600 mb-4">
-                                    Copy this complete prompt into Gemini Canvas to generate your discovery checklist tool.
+                                    Now we'll use AI to generate a complete, working discovery checklist tool with just one prompt.
                                 </p>
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+                                    <h5 class="font-bold text-okta-midnight mb-2 text-sm">How to Use This Prompt:</h5>
+                                    <ol class="list-decimal list-inside text-xs text-slate-600 space-y-2 ml-4">
+                                        <li>Click the <strong>"Copy"</strong> button on the code block below (top-right corner)</li>
+                                        <li>Go to <a href="https://gemini.google.com" target="_blank" class="text-blue-600 underline">Gemini</a> in your browser</li>
+                                        <li>Start a <strong>new chat</strong> (click the + icon if you need to start fresh)</li>
+                                        <li>Paste the prompt into the chat box (Cmd+V or Ctrl+V)</li>
+                                        <li>Press <strong>Enter</strong> to submit</li>
+                                        <li>Wait 15-30 seconds for Gemini to generate your complete HTML file</li>
+                                        <li>Copy the generated HTML code and save it as <code class="bg-white px-1 rounded">discovery-checklist.html</code> on your computer</li>
+                                        <li>Double-click the file to open it in your browser - you now have a working tool!</li>
+                                    </ol>
+                                </div>
                                 <div class="code-block bg-slate-900 group shadow-inner rounded-lg overflow-hidden">
                                     <button onclick="copyToClipboard(this)" class="copy-btn bg-slate-700 hover:bg-slate-600 text-xs text-white px-2 py-1 rounded transition-colors">Copy</button>
                                     <pre><code id="prompt-step-1" class="language-markdown prompt-text">Create a single-file HTML page called "Okta SE Discovery Checklist".
@@ -380,9 +404,8 @@ Return the complete HTML file.</code></pre>
                         <h2 class="text-2xl font-bold text-okta-midnight">Lab 1 Review: What You Just Learned</h2>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <!-- Left: Key Skills -->
-                        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                    <!-- Key Skills -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100 mb-6">
                             <h3 class="font-bold text-okta-midnight mb-4 flex items-center gap-2">
                                 <i class="fas fa-trophy text-yellow-500"></i> Core Skills Acquired
                             </h3>
@@ -409,7 +432,6 @@ Return the complete HTML file.</code></pre>
                                     </div>
                                 </li>
                             </ul>
-                        </div>
                     </div>
 
                     <!-- Reflection Questions -->
@@ -449,74 +471,31 @@ Return the complete HTML file.</code></pre>
             <!-- Divider -->
             <div class="h-px bg-slate-200"></div>
 
-            <!-- INTERLUDE: The Bridge Lesson (Tabs) -->
+            <!-- Quick Lesson: The Workflow -->
             <section id="bridge-lesson" class="scroll-mt-24">
-                <div class="section-shell bg-indigo-900 text-white relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-12 opacity-10"><i class="fas fa-random text-9xl"></i></div>
-
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
+                <div class="section-shell bg-indigo-900 text-white">
+                    <div class="flex items-center gap-3 mb-4">
                             <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center font-bold shadow-lg">
                                 <i class="fas fa-graduation-cap text-white"></i>
                             </div>
-                            <h2 class="text-2xl font-bold">Lesson: The Bridge to VS Code</h2>
+                        <h2 class="text-2xl font-bold">The Workflow: From Gemini to VS Code</h2>
                         </div>
 
-                        <!-- Tab Controls -->
-                        <div class="flex gap-4 border-b border-indigo-700 mb-6">
-                            <button onclick="switchTab('tab-workflow')" id="btn-workflow" class="pb-2 px-4 text-sm font-bold border-b-2 border-green-400 text-white transition-colors">File Split Workflow</button>
-                            <button onclick="switchTab('tab-api')" id="btn-api" class="pb-2 px-4 text-sm font-bold border-b-2 border-transparent text-indigo-300 hover:text-white transition-colors">Polish & Preview</button>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-indigo-950/50 p-5 rounded-lg border border-indigo-800">
+                            <div class="text-2xl font-bold text-indigo-400 mb-2">1</div>
+                            <h3 class="font-bold text-white mb-2">Generate in Gemini</h3>
+                            <p class="text-sm text-indigo-200">Start in Gemini Canvas to prototype quickly. Get your HTML, CSS, and JS in one go.</p>
                         </div>
-
-                        <!-- Tab Content: Workflow -->
-                        <div id="tab-workflow" class="grid md:grid-cols-2 gap-12">
-                            <div>
-                                <h3 class="font-bold text-indigo-200 mb-4">Move safely from Canvas to local files</h3>
-                                <ol class="space-y-6 relative border-l-2 border-indigo-700 ml-3 pl-8">
-                                    <li class="relative">
-                                        <strong class="block text-lg mb-1">1. Start in Gemini</strong>
-                                        <span class="text-indigo-300 text-sm leading-relaxed block">Generate the UI in Gemini Canvas. Grab the plain HTML, CSS, and JS snippets (no frameworks required).</span>
-                                    </li>
-                                    <li class="relative">
-                                        <strong class="block text-lg mb-1">2. Split the files</strong>
-                                        <span class="text-indigo-300 text-sm leading-relaxed block">Paste structure into <code class="bg-indigo-800 px-1 rounded text-xs font-mono">index.html</code>, styles into <code class="bg-indigo-800 px-1 rounded text-xs font-mono">css/main.css</code>, and behavior into <code class="bg-indigo-800 px-1 rounded text-xs font-mono">js/main.js</code>.</span>
-                                    </li>
-                                    <li class="relative">
-                                        <strong class="block text-lg mb-1">3. Wire assets</strong>
-                                        <span class="text-indigo-300 text-sm leading-relaxed block">Update script/link tags so the new files load. Keep secrets out of the browser; this lab stays front-end only.</span>
-                                    </li>
-                                </ol>
+                        <div class="bg-indigo-950/50 p-5 rounded-lg border border-indigo-800">
+                            <div class="text-2xl font-bold text-indigo-400 mb-2">2</div>
+                            <h3 class="font-bold text-white mb-2">Split into Files</h3>
+                            <p class="text-sm text-indigo-200">Organize into separate HTML, CSS, and JS files. Link them properly in VS Code.</p>
                             </div>
-                            <div class="flex items-center justify-center opacity-50">
-                                <i class="fas fa-laptop-code text-9xl text-indigo-800"></i>
-                            </div>
-                        </div>
-
-                        <!-- Tab Content: Polish & Preview -->
-                        <div id="tab-api" class="hidden">
-                            <div class="bg-indigo-950/50 p-6 rounded-xl border border-indigo-800 space-y-4">
-                                <h3 class="font-bold text-indigo-200 mb-4 flex items-center gap-2">
-                                    <i class="fas fa-magic text-green-400"></i> Finish in VS Code
-                                </h3>
-                                <ul class="space-y-3 text-sm text-indigo-200">
-                                    <li class="flex items-start gap-3">
-                                        <i class="fas fa-desktop mt-0.5 text-green-300"></i>
-                                        <span><strong>Live Preview:</strong> Open <code class="bg-indigo-800 px-1 rounded text-xs font-mono">index.html</code> with the Live Preview extension to see changes instantly.</span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i class="fas fa-bug mt-0.5 text-yellow-300"></i>
-                                        <span><strong>Console check:</strong> Fix any missing file references or typos before polishing UI.</span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i class="fas fa-robot mt-0.5 text-blue-300"></i>
-                                        <span><strong>Copilot assist:</strong> Ask Copilot to tidy spacing, add hover states, or refactor JS for readability.</span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i class="fas fa-save mt-0.5 text-purple-300"></i>
-                                        <span><strong>Progress:</strong> Keep this page bookmarked—your checklist progress stays in localStorage.</span>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="bg-indigo-950/50 p-5 rounded-lg border border-indigo-800">
+                            <div class="text-2xl font-bold text-indigo-400 mb-2">3</div>
+                            <h3 class="font-bold text-white mb-2">Polish with Tools</h3>
+                            <p class="text-sm text-indigo-200">Use Live Preview to test and Copilot to refine. Iterate until it's production-ready.</p>
                         </div>
                     </div>
                 </div>
@@ -524,8 +503,9 @@ Return the complete HTML file.</code></pre>
 
             <!-- Phase 2 -->
             <section id="phase2" class="scroll-mt-24">
+                <div class="section-shell">
                 <!-- Breadcrumb -->
-                <nav class="flex items-center gap-2 text-xs text-slate-500 mb-4 font-medium px-4" aria-label="Breadcrumb">
+                    <nav class="flex items-center gap-2 text-xs text-slate-500 mb-4 font-medium" aria-label="Breadcrumb">
                     <a href="#" onclick="toggleView('main'); return false;" class="hover:text-okta-blue transition-colors">
                         <i class="fas fa-home"></i> Home
                     </a>
@@ -533,12 +513,99 @@ Return the complete HTML file.</code></pre>
                     <span class="text-okta-midnight font-bold">Phase 2: Multi-File Structure</span>
                 </nav>
                 
-                <div class="mb-12 text-center px-4">
-                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-okta-midnight text-xl font-bold mb-4 shadow-sm">2</div>
-                    <h2 class="text-3xl font-bold text-okta-midnight">Enhanced Discovery Tool</h2>
-                    <p class="text-slate-500 mt-2 font-medium text-base">Add Intelligence to Your Checklist</p>
+                    <div class="bg-gradient-to-br from-blue-900 to-purple-900 -m-11 mb-6 p-8 rounded-t-[1.75rem]">
+                        <span class="uppercase text-xs tracking-[0.2em] text-white/80 block mb-2">Lab 2 • Multi-File Project</span>
+                        <h2 class="text-2xl font-bold text-white mb-2">From Single File to Professional Structure</h2>
+                        <p class="text-blue-100">Transform your Canvas prototype into a properly organized multi-file project using VS Code.</p>
                 </div>
-                <div class="px-2 sm:px-4 space-y-8">
+
+                    <div class="space-y-8">
+                        
+                        <!-- Before & After Visual -->
+                        <div class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-lg font-bold text-okta-midnight mb-4 flex items-center gap-2">
+                                <i class="fas fa-exchange-alt text-purple-600"></i> Before & After: The Transformation
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- Before -->
+                                <div class="bg-white p-5 rounded-lg border-2 border-red-200">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h4 class="font-bold text-red-700 flex items-center gap-2">
+                                            <i class="fas fa-file text-red-500"></i> Before (Lab 1)
+                                        </h4>
+                                        <span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded font-bold">Single File</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="bg-slate-50 p-3 rounded border border-slate-200 font-mono text-xs">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <i class="fas fa-file-code text-orange-500"></i>
+                                                <span class="font-bold">discovery-checklist.html</span>
+                                                <span class="ml-auto text-[10px] text-red-600">~500 lines</span>
+                                            </div>
+                                            <div class="ml-6 text-[10px] text-slate-500 space-y-1">
+                                                <div>• HTML structure</div>
+                                                <div>• &lt;style&gt; CSS embedded</div>
+                                                <div>• &lt;script&gt; JavaScript embedded</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-slate-600 mt-3">
+                                            <p class="font-bold mb-1">Problems:</p>
+                                            <ul class="list-disc list-inside space-y-1 text-[11px] ml-2 text-red-600">
+                                                <li>Hard to find specific code</li>
+                                                <li>No code reusability</li>
+                                                <li>Difficult to debug</li>
+                                                <li>Can't use VS Code features easily</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- After -->
+                                <div class="bg-white p-5 rounded-lg border-2 border-green-200">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h4 class="font-bold text-green-700 flex items-center gap-2">
+                                            <i class="fas fa-folder text-green-500"></i> After (Lab 2)
+                                        </h4>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-bold">Multi-File</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="bg-slate-50 p-3 rounded border border-slate-200 font-mono text-xs space-y-2">
+                                            <div class="flex items-center gap-2">
+                                                <i class="fas fa-file-code text-orange-500"></i>
+                                                <span class="font-bold">index.html</span>
+                                                <span class="ml-auto text-[10px] text-green-600">~200 lines</span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <i class="fab fa-js-square text-yellow-500"></i>
+                                                <span class="font-bold">discovery-logic.js</span>
+                                                <span class="ml-auto text-[10px] text-green-600">~150 lines</span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <i class="fab fa-css3-alt text-blue-500"></i>
+                                                <span class="font-bold">discovery-styles.css</span>
+                                                <span class="ml-auto text-[10px] text-green-600">~150 lines</span>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-slate-600 mt-3">
+                                            <p class="font-bold mb-1">Benefits:</p>
+                                            <ul class="list-disc list-inside space-y-1 text-[11px] ml-2 text-green-600">
+                                                <li>Clean separation of concerns</li>
+                                                <li>Easy to find and edit code</li>
+                                                <li>Reusable across projects</li>
+                                                <li>Professional development workflow</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                                <p class="text-xs text-blue-900">
+                                    <strong>🎯 The Goal:</strong> Same functionality, better organization. You'll take your working Lab 1 code 
+                                    and transform it into a professional multi-file project structure. This is how real developers work, 
+                                    and it sets you up for Lab 3 where you'll use VS Code's powerful Live Preview and Copilot features.
+                                </p>
+                            </div>
+                        </div>
 
                 <!-- Phase 2 Checklist -->
                 <div class="section-shell mb-10">
@@ -557,27 +624,27 @@ Return the complete HTML file.</code></pre>
                         </div>
                         <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step3" onclick="toggleCheck(this)">
                             <i class="far fa-square text-slate-300 text-lg"></i>
-                            <span class="text-sm font-medium text-slate-700">Create three files: index.html, discovery-logic.js, discovery-styles.css</span>
+                            <span class="text-sm font-medium text-slate-700">Create three empty files: index.html, discovery-logic.js, discovery-styles.css</span>
                         </div>
                         <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step4" onclick="toggleCheck(this)">
                             <i class="far fa-square text-slate-300 text-lg"></i>
-                            <span class="text-sm font-medium text-slate-700">Paste the multi-file prompt into Gemini</span>
+                            <span class="text-sm font-medium text-slate-700">Copy and paste the Lab 2 prompt into Gemini</span>
                         </div>
                         <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step5" onclick="toggleCheck(this)">
                             <i class="far fa-square text-slate-300 text-lg"></i>
-                            <span class="text-sm font-medium text-slate-700">Copy Lab 1 HTML into index.html</span>
+                            <span class="text-sm font-medium text-slate-700">Paste complete HTML code into index.html</span>
                         </div>
                         <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step6" onclick="toggleCheck(this)">
                             <i class="far fa-square text-slate-300 text-lg"></i>
-                            <span class="text-sm font-medium text-slate-700">Add generated code to respective files</span>
+                            <span class="text-sm font-medium text-slate-700">Paste JavaScript code into discovery-logic.js</span>
                         </div>
                         <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step7" onclick="toggleCheck(this)">
                             <i class="far fa-square text-slate-300 text-lg"></i>
-                            <span class="text-sm font-medium text-slate-700">Link JS and CSS files in HTML</span>
+                            <span class="text-sm font-medium text-slate-700">Paste CSS code into discovery-styles.css</span>
                         </div>
                         <div class="checklist-item flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" data-id="p2-step8" onclick="toggleCheck(this)">
                             <i class="far fa-square text-slate-300 text-lg"></i>
-                            <span class="text-sm font-medium text-slate-700">Open index.html in browser and test</span>
+                            <span class="text-sm font-medium text-slate-700">Open index.html in browser and test all features</span>
                         </div>
                     </div>
                 </div>
@@ -643,23 +710,296 @@ Return the complete HTML file.</code></pre>
                 </div>
 
                 <div class="space-y-6">
-                    <!-- Instructions -->
-                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-100 shadow-sm">
-                        <h4 class="font-bold text-okta-midnight mb-3 text-base flex items-center gap-2">
-                            <i class="fas fa-info-circle text-okta-blue"></i> How to Use This Lab
+                    <!-- Overview Section -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 shadow-sm">
+                        <h4 class="font-bold text-okta-midnight mb-3 text-lg flex items-center gap-2">
+                            <i class="fas fa-map-marked-alt text-okta-blue"></i> Lab 2 Overview: What You're About to Build
                         </h4>
-                        <ol class="list-decimal list-inside text-sm text-okta-gray space-y-2">
-                            <li>Create a new folder called <strong>okta-discovery-tool</strong></li>
-                            <li>Open it in <strong>VS Code</strong> (File > Open Folder)</li>
-                            <li>Create three empty files: <code class="bg-white px-2 py-1 rounded text-xs">index.html</code>, <code class="bg-white px-2 py-1 rounded text-xs">discovery-logic.js</code>, <code class="bg-white px-2 py-1 rounded text-xs">discovery-styles.css</code></li>
-                            <li>Copy the prompt below and paste it into <strong>Gemini</strong></li>
-                            <li>Gemini will return <strong>THREE separate code blocks</strong> (JS, CSS, and HTML modifications)</li>
-                            <li>Paste your Lab 1 HTML into <strong>index.html</strong>, then add the modifications from Gemini</li>
-                            <li>Paste the JS code into <strong>discovery-logic.js</strong></li>
-                            <li>Paste the CSS code into <strong>discovery-styles.css</strong></li>
-                            <li>Add the <code class="bg-white px-2 py-1 rounded text-xs">&lt;script&gt;</code> and <code class="bg-white px-2 py-1 rounded text-xs">&lt;link&gt;</code> tags to your HTML (Gemini will show you where)</li>
-                            <li>Open <strong>index.html</strong> in your browser and test</li>
-                        </ol>
+                        <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                            In Lab 1, you created a discovery checklist as a single HTML file. Now you'll build an <strong>enhanced version</strong> using a <strong>professional three-file structure</strong> with added features like intelligent summary generation and product recommendations.
+                        </p>
+                        <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                            This time, you'll organize everything properly from the start:
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white p-4 rounded-lg border border-blue-100">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fas fa-file-code text-orange-500 text-xl"></i>
+                                    <h5 class="font-bold text-okta-midnight">index.html</h5>
+                                </div>
+                                <p class="text-xs text-slate-600">The structure - what goes on the page (headings, sections, buttons)</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-blue-100">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fab fa-js-square text-yellow-500 text-xl"></i>
+                                    <h5 class="font-bold text-okta-midnight">discovery-logic.js</h5>
+                                </div>
+                                <p class="text-xs text-slate-600">The behavior - what happens when you click buttons (generates summaries, analyzes selections)</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-blue-100">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fab fa-css3-alt text-blue-500 text-xl"></i>
+                                    <h5 class="font-bold text-okta-midnight">discovery-styles.css</h5>
+                                </div>
+                                <p class="text-xs text-slate-600">The appearance - how it looks (colors, layouts, animations)</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-r">
+                            <p class="text-xs text-yellow-800">
+                                <strong>🎯 Why This Matters:</strong> This separation is called "Separation of Concerns" - it's how professional developers work. 
+                                It makes code easier to read, debug, and update. Plus, you'll need VS Code for this (which sets you up for Lab 3's Live Preview feature).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Step-by-Step Instructions -->
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-okta-midnight mb-4 text-base flex items-center gap-2">
+                            <i class="fas fa-tasks text-green-600"></i> Complete Step-by-Step Guide (For Complete Beginners)
+                        </h4>
+                        
+                        <!-- Step 1 -->
+                        <details class="mb-6 pb-6 border-b border-slate-200 group">
+                            <summary class="flex items-center gap-3 cursor-pointer list-none focus:outline-none">
+                                <div class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">1</div>
+                                <h5 class="font-bold text-okta-midnight">Create Your Project Folder</h5>
+                                <i class="fas fa-chevron-down ml-auto text-slate-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="ml-11 mt-4 space-y-3">
+                                <p class="text-sm text-slate-700"><strong>What to do:</strong> Create a new folder on your computer called <code class="bg-slate-100 px-2 py-1 rounded text-xs">okta-discovery-tool</code></p>
+                                <p class="text-xs text-slate-600"><strong>Where:</strong> Anywhere you like - your Desktop, Documents, or a dedicated coding folder</p>
+                                <p class="text-xs text-slate-600"><strong>Why:</strong> This folder will hold all your project files. Having a dedicated folder keeps everything organized and makes it easy to open in VS Code.</p>
+                                <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                                    <p class="text-xs text-slate-600 mb-1"><strong>💡 Mac Users:</strong></p>
+                                    <code class="text-xs font-mono">Right-click on Desktop → New Folder → Name it "okta-discovery-tool"</code>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                                    <p class="text-xs text-slate-600 mb-1"><strong>💡 Windows Users:</strong></p>
+                                    <code class="text-xs font-mono">Right-click on Desktop → New → Folder → Name it "okta-discovery-tool"</code>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- Step 2 -->
+                        <details class="mb-6 pb-6 border-b border-slate-200 group">
+                            <summary class="flex items-center gap-3 cursor-pointer list-none focus:outline-none">
+                                <div class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">2</div>
+                                <h5 class="font-bold text-okta-midnight">Open Folder in VS Code</h5>
+                                <i class="fas fa-chevron-down ml-auto text-slate-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="ml-11 mt-4 space-y-3">
+                                <p class="text-sm text-slate-700"><strong>What to do:</strong> Open VS Code, then open your new folder</p>
+                                <div class="space-y-2">
+                                    <p class="text-xs text-slate-600"><strong>Method 1 - Using the Menu:</strong></p>
+                                    <ol class="list-decimal list-inside text-xs text-slate-600 space-y-1 ml-4">
+                                        <li>Open VS Code (double-click the VS Code icon)</li>
+                                        <li>Click <strong>File</strong> in the menu bar at the top</li>
+                                        <li>Click <strong>Open Folder...</strong></li>
+                                        <li>Navigate to and select your <code class="bg-slate-100 px-1 rounded">okta-discovery-tool</code> folder</li>
+                                        <li>Click <strong>Open</strong></li>
+                                    </ol>
+                                </div>
+                                <div class="space-y-2">
+                                    <p class="text-xs text-slate-600"><strong>Method 2 - Drag and Drop:</strong></p>
+                                    <ol class="list-decimal list-inside text-xs text-slate-600 space-y-1 ml-4">
+                                        <li>Drag the <code class="bg-slate-100 px-1 rounded">okta-discovery-tool</code> folder onto the VS Code icon</li>
+                                        <li>The folder will open automatically</li>
+                                    </ol>
+                                </div>
+                                <p class="text-xs text-slate-600"><strong>Why:</strong> VS Code needs to know which folder you're working in. When you "Open Folder", VS Code can see all files inside and help you navigate between them easily.</p>
+                                <div class="bg-green-50 p-3 rounded border-l-4 border-green-400">
+                                    <p class="text-xs text-green-800"><strong>✓ Success Check:</strong> You should see "OKTA-DISCOVERY-TOOL" in the sidebar on the left (the Explorer panel). It will be empty for now - that's normal!</p>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- Step 3 -->
+                        <details class="mb-6 pb-6 border-b border-slate-200 group">
+                            <summary class="flex items-center gap-3 cursor-pointer list-none focus:outline-none">
+                                <div class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">3</div>
+                                <h5 class="font-bold text-okta-midnight">Create Three Empty Files</h5>
+                                <i class="fas fa-chevron-down ml-auto text-slate-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="ml-11 mt-4 space-y-3">
+                                <p class="text-sm text-slate-700"><strong>What to do:</strong> Create three new files with specific names</p>
+                                <div class="space-y-2">
+                                    <p class="text-xs text-slate-600"><strong>How to create each file:</strong></p>
+                                    <ol class="list-decimal list-inside text-xs text-slate-600 space-y-1 ml-4">
+                                        <li>Look at the left sidebar (Explorer panel) in VS Code</li>
+                                        <li>Click the <strong>"New File"</strong> icon (looks like a page with a + symbol, right next to your folder name)</li>
+                                        <li>Type the file name <strong>exactly as shown below</strong> (including the .html, .js, or .css extension)</li>
+                                        <li>Press <strong>Enter</strong> to create the file</li>
+                                        <li>Repeat for all three files</li>
+                                    </ol>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                                    <p class="text-xs text-slate-600 mb-2"><strong>Create these three files (in this order):</strong></p>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center gap-2 bg-white p-2 rounded border border-orange-200">
+                                            <i class="fas fa-file-code text-orange-500"></i>
+                                            <code class="font-mono text-xs font-bold">index.html</code>
+                                            <span class="text-[10px] text-slate-500 ml-auto">← Main page structure</span>
+                                        </div>
+                                        <div class="flex items-center gap-2 bg-white p-2 rounded border border-yellow-200">
+                                            <i class="fab fa-js-square text-yellow-500"></i>
+                                            <code class="font-mono text-xs font-bold">discovery-logic.js</code>
+                                            <span class="text-[10px] text-slate-500 ml-auto">← JavaScript functions</span>
+                                        </div>
+                                        <div class="flex items-center gap-2 bg-white p-2 rounded border border-blue-200">
+                                            <i class="fab fa-css3-alt text-blue-500"></i>
+                                            <code class="font-mono text-xs font-bold">discovery-styles.css</code>
+                                            <span class="text-[10px] text-slate-500 ml-auto">← Custom styles</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-600"><strong>Why these names:</strong> The names tell VS Code (and your browser) what type of file it is. <code class="bg-slate-100 px-1 rounded">.html</code> = webpage structure, <code class="bg-slate-100 px-1 rounded">.js</code> = JavaScript code, <code class="bg-slate-100 px-1 rounded">.css</code> = styling rules.</p>
+                                <div class="bg-green-50 p-3 rounded border-l-4 border-green-400">
+                                    <p class="text-xs text-green-800"><strong>✓ Success Check:</strong> You should now see all three files listed in the Explorer panel on the left. They'll be empty (that's perfect!).</p>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- Step 4 -->
+                        <details class="mb-6 pb-6 border-b border-slate-200 group">
+                            <summary class="flex items-center gap-3 cursor-pointer list-none focus:outline-none">
+                                <div class="w-8 h-8 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-sm">4</div>
+                                <h5 class="font-bold text-okta-midnight">Generate Code with Gemini</h5>
+                                <i class="fas fa-chevron-down ml-auto text-slate-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="ml-11 mt-4 space-y-3">
+                                <p class="text-sm text-slate-700"><strong>What to do:</strong> Use Gemini to generate all three files at once</p>
+                                <ol class="list-decimal list-inside text-xs text-slate-600 space-y-2 ml-4">
+                                    <li>Scroll down to find the <strong>"Lab 2 Prompt"</strong> code block below</li>
+                                    <li>Click the <strong>"Copy"</strong> button in the top-right corner of the code block</li>
+                                    <li>Open <strong>Gemini</strong> in your browser (gemini.google.com)</li>
+                                    <li>Paste the prompt into Gemini's chat box</li>
+                                    <li>Press <strong>Enter</strong> to submit</li>
+                                    <li>Wait for Gemini to generate the code (usually 20-40 seconds since it's generating 3 complete files)</li>
+                                </ol>
+                                <p class="text-xs text-slate-600"><strong>Why:</strong> This single prompt asks Gemini to create all three files at once - a complete HTML page with enhanced features, plus the JavaScript and CSS to power it. It's like hiring a team of developers with one instruction!</p>
+                                <div class="bg-blue-50 p-3 rounded border-l-4 border-blue-400">
+                                    <p class="text-xs text-blue-800"><strong>📋 What Gemini Will Give You:</strong> Gemini will return <strong>THREE complete code blocks</strong> labeled:</p>
+                                    <ul class="list-disc list-inside text-xs text-blue-700 mt-2 ml-4 space-y-1">
+                                        <li><strong>index.html</strong> - Complete HTML page with the discovery checklist and summary panel</li>
+                                        <li><strong>discovery-logic.js</strong> - Complete JavaScript file with all the smart functions</li>
+                                        <li><strong>discovery-styles.css</strong> - Complete CSS file with professional styling</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- Step 5 -->
+                        <details class="mb-6 pb-6 border-b border-slate-200 group">
+                            <summary class="flex items-center gap-3 cursor-pointer list-none focus:outline-none">
+                                <div class="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-sm">5</div>
+                                <h5 class="font-bold text-okta-midnight">Paste HTML Code Into index.html</h5>
+                                <i class="fas fa-chevron-down ml-auto text-slate-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="ml-11 mt-4 space-y-3">
+                                <p class="text-sm text-slate-700"><strong>What to do:</strong> Copy the complete HTML page from Gemini into your HTML file</p>
+                                <ol class="list-decimal list-inside text-xs text-slate-600 space-y-2 ml-4">
+                                    <li>Go back to Gemini's response from Step 4</li>
+                                    <li>Find the code block labeled <strong>"index.html"</strong></li>
+                                    <li>Copy <strong>everything</strong> in that code block (from <code class="bg-slate-100 px-1 rounded">&lt;!DOCTYPE html&gt;</code> to <code class="bg-slate-100 px-1 rounded">&lt;/html&gt;</code>)</li>
+                                    <li>Go back to VS Code</li>
+                                    <li>Click on <code class="bg-slate-100 px-1 rounded">index.html</code> in the Explorer panel to open it</li>
+                                    <li>Paste the HTML code (Cmd+V or Ctrl+V) - this will fill your empty file</li>
+                                    <li>Save the file (Cmd+S or Ctrl+S)</li>
+                                </ol>
+                                <p class="text-xs text-slate-600"><strong>What's inside:</strong> This HTML file contains the full discovery checklist with all 8 sections, checkboxes, a summary button, and already has the <code class="bg-slate-100 px-1 rounded">&lt;link&gt;</code> and <code class="bg-slate-100 px-1 rounded">&lt;script&gt;</code> tags to connect to your CSS and JS files!</p>
+                                <p class="text-xs text-slate-600"><strong>Why complete HTML:</strong> By generating the complete file, you avoid mistakes from manually copying parts from Lab 1 and trying to add modifications. Everything is integrated and ready to work together.</p>
+                            </div>
+                        </details>
+
+                        <!-- Step 6 -->
+                        <details class="mb-6 pb-6 border-b border-slate-200 group">
+                            <summary class="flex items-center gap-3 cursor-pointer list-none focus:outline-none">
+                                <div class="w-8 h-8 rounded-full bg-yellow-500 text-white flex items-center justify-center font-bold text-sm">6</div>
+                                <h5 class="font-bold text-okta-midnight">Paste JavaScript Code Into discovery-logic.js</h5>
+                                <i class="fas fa-chevron-down ml-auto text-slate-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="ml-11 mt-4 space-y-3">
+                                <p class="text-sm text-slate-700"><strong>What to do:</strong> Copy the JavaScript code from Gemini into your JS file</p>
+                                <ol class="list-decimal list-inside text-xs text-slate-600 space-y-2 ml-4">
+                                    <li>Go back to Gemini's response from Step 4</li>
+                                    <li>Find the code block labeled <strong>"discovery-logic.js"</strong></li>
+                                    <li>Copy <strong>everything</strong> in that code block (it will start with comments and functions)</li>
+                                    <li>Go back to VS Code</li>
+                                    <li>Click on <code class="bg-slate-100 px-1 rounded">discovery-logic.js</code> in the Explorer panel</li>
+                                    <li>Paste the code (Cmd+V or Ctrl+V)</li>
+                                    <li>Save the file (Cmd+S or Ctrl+S)</li>
+                                </ol>
+                                <p class="text-xs text-slate-600"><strong>Where this goes:</strong> ALL of the JavaScript code goes into <code class="bg-slate-100 px-1 rounded">discovery-logic.js</code>. Don't put any JavaScript in the HTML file - that's the whole point of separating it!</p>
+                                <p class="text-xs text-slate-600"><strong>Why:</strong> The JavaScript file contains all the "behavior" logic - functions that generate summaries, read checkbox values, and handle button clicks. Keeping it separate makes it easier to debug and update.</p>
+                            </div>
+                        </details>
+
+                        <!-- Step 7 -->
+                        <details class="mb-6 pb-6 border-b border-slate-200 group">
+                            <summary class="flex items-center gap-3 cursor-pointer list-none focus:outline-none">
+                                <div class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">7</div>
+                                <h5 class="font-bold text-okta-midnight">Paste CSS Code Into discovery-styles.css</h5>
+                                <i class="fas fa-chevron-down ml-auto text-slate-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="ml-11 mt-4 space-y-3">
+                                <p class="text-sm text-slate-700"><strong>What to do:</strong> Copy the CSS code from Gemini into your CSS file</p>
+                                <ol class="list-decimal list-inside text-xs text-slate-600 space-y-2 ml-4">
+                                    <li>Go back to Gemini's response from Step 4</li>
+                                    <li>Find the code block labeled <strong>"discovery-styles.css"</strong></li>
+                                    <li>Copy <strong>everything</strong> in that code block (it will have CSS rules with selectors like <code class="bg-slate-100 px-1 rounded">.summary-panel</code>)</li>
+                                    <li>Go back to VS Code</li>
+                                    <li>Click on <code class="bg-slate-100 px-1 rounded">discovery-styles.css</code> in the Explorer panel</li>
+                                    <li>Paste the code (Cmd+V or Ctrl+V)</li>
+                                    <li>Save the file (Cmd+S or Ctrl+S)</li>
+                                </ol>
+                                <p class="text-xs text-slate-600"><strong>Where this goes:</strong> ALL of the CSS styling goes into <code class="bg-slate-100 px-1 rounded">discovery-styles.css</code>. This keeps all your styling rules in one organized place.</p>
+                                <p class="text-xs text-slate-600"><strong>Why:</strong> CSS controls how things look - colors, fonts, layouts, animations. Separating it makes it easy to update the design without touching the HTML or JavaScript.</p>
+                            </div>
+                        </details>
+
+                        <!-- Step 8 -->
+                        <details class="mb-0 group">
+                            <summary class="flex items-center gap-3 cursor-pointer list-none focus:outline-none">
+                                <div class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">8</div>
+                                <h5 class="font-bold text-okta-midnight">Test in Your Browser</h5>
+                                <i class="fas fa-chevron-down ml-auto text-slate-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="ml-11 mt-4 space-y-3">
+                                <p class="text-sm text-slate-700"><strong>What to do:</strong> Open your page in a browser and test all the features</p>
+                                <ol class="list-decimal list-inside text-xs text-slate-600 space-y-2 ml-4">
+                                    <li>In VS Code, right-click on <code class="bg-slate-100 px-1 rounded">index.html</code> in the Explorer panel</li>
+                                    <li>Select <strong>"Reveal in Finder"</strong> (Mac) or <strong>"Reveal in File Explorer"</strong> (Windows)</li>
+                                    <li>Double-click <code class="bg-slate-100 px-1 rounded">index.html</code> - it will open in your default browser</li>
+                                    <li>Check several boxes across different sections of the discovery checklist</li>
+                                    <li>Click the <strong>"Generate Discovery Summary"</strong> button</li>
+                                    <li>You should see a summary panel appear with intelligent insights and product recommendations!</li>
+                                </ol>
+                                <p class="text-xs text-slate-600"><strong>Why test:</strong> Testing confirms everything is working together. The HTML loads the page structure, CSS makes it look professional, and JavaScript adds the smart behavior.</p>
+                                <div class="bg-green-50 p-4 rounded border-l-4 border-green-400">
+                                    <p class="text-xs text-green-800 font-bold mb-2">✓ What Success Looks Like:</p>
+                                    <ul class="list-disc list-inside text-xs text-green-700 space-y-1 ml-4">
+                                        <li>The page loads with a clean, professional design (Tailwind + custom CSS)</li>
+                                        <li>All 8 checklist sections are visible with checkboxes</li>
+                                        <li>Clicking checkboxes updates the counters</li>
+                                        <li>The "Generate Summary" button is styled and visible</li>
+                                        <li>Clicking the button reveals a summary panel with 5 sections</li>
+                                        <li>The summary includes intelligent product recommendations based on what you checked</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded border-l-4 border-red-400 mt-3">
+                                    <p class="text-xs text-red-800 font-bold mb-2">❌ If Something Doesn't Work:</p>
+                                    <ul class="list-disc list-inside text-xs text-red-700 space-y-1 ml-4">
+                                        <li><strong>Page looks unstyled?</strong> Check that <code class="bg-white px-1 rounded">discovery-styles.css</code> is in the same folder as <code class="bg-white px-1 rounded">index.html</code> and the filename is spelled exactly right</li>
+                                        <li><strong>Button does nothing?</strong> Check that <code class="bg-white px-1 rounded">discovery-logic.js</code> is in the same folder. Open browser console (F12 or Cmd+Option+I) to see error messages</li>
+                                        <li><strong>Missing Tailwind styles?</strong> Make sure you have an internet connection (Tailwind loads from CDN)</li>
+                                        <li><strong>Still broken?</strong> Copy any error messages from the browser console and paste them back into Gemini with "Fix this error:" - Gemini can help debug!</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-blue-50 p-3 rounded border-l-4 border-blue-400 mt-3">
+                                    <p class="text-xs text-blue-800"><strong>🎉 Congratulations!</strong> You just built a professional multi-file web application using AI-powered development. This is exactly how modern developers work - separating concerns, organizing code, and using the right tools for the job.</p>
+                                </div>
+                            </div>
+                        </details>
                     </div>
 
                     <!-- The Single Prompt -->
@@ -673,57 +1013,66 @@ Return the complete HTML file.</code></pre>
                                 <i class="fas fa-copy"></i> Copy
                             </button>
                         </div>
-                        <pre><code id="prompt-step-2-1" class="language-markdown prompt-text">Enhance the existing "Okta SE Discovery Checklist" by separating concerns into multiple files.
+                        <pre><code id="prompt-step-2-1" class="language-markdown prompt-text">Create an "Okta SE Discovery Checklist" as a multi-file project with three separate files.
 
-I have three files:
-- index.html (contains the Discovery Checklist from Lab 1)
-- discovery-logic.js (empty - needs JavaScript)
-- discovery-styles.css (empty - needs CSS)
+Files to create:
+- index.html (complete HTML structure)
+- discovery-logic.js (JavaScript behavior)
+- discovery-styles.css (custom styles)
 
 Requirements:
 
-1) Create discovery-logic.js with:
-   - A function `generateDiscoverySummary()` that:
+1) index.html - Complete HTML file with:
+   - Page title: "Okta SE Discovery Checklist"
+   - Sectioned checklist with 8 categories (Business Goals, Current Identity Stack, Applications & Protocols, MFA & Device Posture, Lifecycle & Governance, Privileged Access, Security & Compliance, Timeline & Success Criteria)
+   - Each section: 5-8 realistic Okta-related checklist items with checkboxes
+   - Optional notes textarea per section
+   - Checked-count display per section
+   - Total checked count at page top
+   - "Generate Discovery Summary" button at the bottom
+   - Summary panel container with 5 section divs (initially hidden)
+   - Link to discovery-styles.css in <head>
+   - Link to discovery-logic.js before </body>
+   - Use Tailwind CSS via CDN for base styling
+
+2) discovery-logic.js with:
+   - Function `generateDiscoverySummary()` that:
      * Reads all checked checkboxes from the HTML
      * Analyzes selections and generates intelligent text for 5 sections:
        - What We Learned
        - Risks / Gaps Identified
        - Recommended Next Steps
-       - Suggested Okta Products (map checkboxes to products like OIG, LCM, OPA, Device Trust)
+       - Suggested Okta Products (map checkboxes to products: OIG, LCM, OPA, Device Trust)
        - Follow-Up Questions
      * Uses IF/ELSE logic to map selections to recommendations:
-       - If "Entra ID" or "Active Directory" is checked → add competitive positioning note
-       - If "SCIM" or lifecycle items checked → recommend Lifecycle Management
-       - If governance items checked → recommend Okta Identity Governance
-       - If privileged access items checked → recommend Okta Privileged Access
-       - If device/posture items checked → recommend Device Trust / Assurance
-   - A function `copySummaryToClipboard()` for one-click copying
+       - If identity provider mentioned → add competitive positioning
+       - If SCIM or lifecycle checked → recommend Lifecycle Management
+       - If governance checked → recommend Okta Identity Governance
+       - If privileged access checked → recommend Okta Privileged Access
+       - If device/posture checked → recommend Device Trust
+   - Function `copySummaryToClipboard()` for one-click copying
+   - Function to update section and total counts
    - Clear comments explaining each function
 
-2) Create discovery-styles.css with:
-   - Styles for a summary panel (card layout with sections)
-   - Product recommendation badges (colored pills)
-   - Hover effects and transitions
+3) discovery-styles.css with:
+   - Styles for summary panel (card layout with sections)
+   - Product recommendation badges (colored pills: blue for SSO, green for MFA, purple for Governance, orange for Privileged Access)
+   - Smooth hover effects and transitions
    - Responsive mobile styles
-   - Use CSS Grid for the summary layout
-
-3) Provide HTML modifications to add:
-   - A "Generate Discovery Summary" button (styled)
-   - A summary panel container with 5 section divs (that JS will populate)
-   - Add `<script src="discovery-logic.js"></script>` before `</body>`
-   - Add `<link rel="stylesheet" href="discovery-styles.css">` in `<head>`
+   - CSS Grid for summary layout
+   - Professional color scheme
 
 Constraints:
-- Vanilla JavaScript only (no frameworks)
-- Keep the original checklist HTML intact
+- Vanilla JavaScript only (no frameworks except Tailwind for basic styling)
+- Inline JavaScript for simple checkbox counting is fine
 - Use deterministic logic (no AI API calls)
-- Add clear comments in all code
-- Make it production-ready
+- Add clear, helpful comments in all code
+- Make it production-ready and visually appealing
 
 Return THREE separate code blocks labeled:
-1. **discovery-logic.js** (full file content)
-2. **discovery-styles.css** (full file content)
-3. **HTML Modifications** (only the new parts to add, with clear instructions on where to place them)</code></pre>
+1. **index.html** (complete file)
+2. **discovery-logic.js** (complete file)
+3. **discovery-styles.css** (complete file)</code></pre>
                     </div>
 
                     <!-- Expected Output Preview -->
@@ -734,23 +1083,22 @@ Return THREE separate code blocks labeled:
                         <ul class="space-y-2 text-xs text-green-900">
                             <li class="flex items-start gap-2">
                                 <span class="text-green-600 font-bold">📄</span>
-                                <span><strong>discovery-logic.js:</strong> Complete JavaScript file with summary generation logic and clipboard copying</span>
+                                <span><strong>index.html:</strong> Complete HTML page with the full discovery checklist (8 sections), summary button, and all necessary links to CSS/JS files</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 font-bold">⚡</span>
+                                <span><strong>discovery-logic.js:</strong> Complete JavaScript file with intelligent summary generation, product recommendations, and clipboard functionality</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-green-600 font-bold">🎨</span>
-                                <span><strong>discovery-styles.css:</strong> Complete CSS file with modern card layouts, product badges, and responsive design</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-green-600 font-bold">🔗</span>
-                                <span><strong>HTML Modifications:</strong> Button HTML, summary panel structure, and link tags with clear placement instructions</span>
+                                <span><strong>discovery-styles.css:</strong> Complete CSS file with professional styling, card layouts, product badges, hover effects, and mobile responsiveness</span>
                             </li>
                         </ul>
                         <div class="mt-4 pt-3 border-t border-green-300">
-                            <p class="text-xs text-green-800"><strong>Pro Tip:</strong> This multi-file structure teaches you real-world project organization. In Lab 3, you'll use VS Code's Live Preview and Copilot to enhance it further!</p>
+                            <p class="text-xs text-green-800"><strong>💡 The Key Difference:</strong> Unlike Lab 1's single file, this gives you three organized files that work together. The HTML is already wired to load the CSS and JS - no manual linking needed! This is professional-grade project structure.</p>
                         </div>
                     </div>
                 </div>
-
                 </div>
             </section>
 
@@ -809,210 +1157,6 @@ Return THREE separate code blocks labeled:
                             <h3 class="font-bold text-okta-midnight mb-2">4. Refine</h3>
                             <p class="text-xs text-okta-gray">"Feedback Loops"</p>
                             <p class="text-xs text-slate-400 mt-2">Paste errors back into the prompt. Ask for styling tweaks. Iterate until it vibes.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Divider -->
-            <div class="h-px bg-slate-200"></div>
-
-            <!-- INTERLUDE: The Copilot Lesson -->
-            <section id="cursor-lesson" class="scroll-mt-24">
-                <div class="section-shell bg-purple-900 text-white relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-12 opacity-10">
-                        <i class="fas fa-bolt text-9xl"></i>
-                    </div>
-
-                    <div class="relative z-10 space-y-8">
-                        <!-- Header -->
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center font-bold shadow-lg">
-                                <i class="fas fa-robot text-white"></i>
-                            </div>
-                            <div>
-                                <h2 class="text-2xl font-bold">Lesson: The Copilot Advantage</h2>
-                                <p class="text-xs text-purple-200 mt-1">
-                                    Rebuild the <span class="font-semibold">Okta User Generator</span> from Phase 2 in a fraction of the time.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <!-- Column 1: Mental Model -->
-                            <div class="space-y-4 md:col-span-1">
-                                <h3 class="font-bold text-purple-200 mb-1 text-sm">1. Mental Model: Tourist vs. Resident</h3>
-
-                                <div class="bg-purple-950/50 p-4 rounded-lg border border-purple-800 text-xs space-y-3">
-                                    <div>
-                                        <h4 class="font-bold text-red-300 mb-1 flex items-center gap-2">
-                                            <i class="fas fa-times-circle"></i> Web Chat (ChatGPT / Gemini)
-                                        </h4>
-                                        <p class="text-purple-300">
-                                            A <span class="font-semibold">Tourist</span> – it only sees what you paste. It can’t reliably know your
-                                            folder structure, local types, or imports. Great for exploring ideas, weaker for editing a real project.
-                                        </p>
-                                    </div>
-                                    <div class="border-t border-purple-800 pt-3">
-                                        <h4 class="font-bold text-green-400 mb-1 flex items-center gap-2">
-                                            <i class="fas fa-check-circle"></i> Copilot (Inside Your Repo)
-                                        </h4>
-                                        <p class="text-purple-300">
-                                            A <span class="font-semibold">Resident</span> – it scans your entire codebase. It knows about
-                                            <code class="bg-purple-800 px-1 rounded font-mono">app/types/okta.ts</code>,
-                                            <code class="bg-purple-800 px-1 rounded font-mono">app/actions/userActions.ts</code>, and your components.
-                                            When you say “update the User Generator,” it edits the right file.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="bg-purple-950/60 p-3 rounded-lg border border-purple-800 text-xs">
-                                    <p class="text-purple-200 font-semibold mb-1 uppercase tracking-wider">
-                                        Goal of Lab 3
-                                    </p>
-                                    <p class="text-purple-300">
-                                        Take the <strong>same app</strong> from Phase 2 and rebuild it using
-                                        <strong>2–3 Composer prompts</strong> instead of manually pasting code between chat and VS Code.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Column 2: Hands-On Steps -->
-                            <div class="space-y-4 md:col-span-1">
-                                <h3 class="font-bold text-purple-200 text-sm mb-1">2. Hands-On: The Composer Flow</h3>
-
-                                <!-- Step List -->
-                                <ol class="space-y-4 text-xs text-purple-100">
-                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
-                                        <p class="font-semibold mb-1">
-                                            Step 0 – Open the Project in VS Code
-                                        </p>
-                                        <ul class="list-disc list-inside space-y-1 text-purple-200">
-                                            <li>Open <strong>VS Code</strong> with Copilot installed.</li>
-                                            <li>Go to <code class="bg-purple-800 px-1 rounded font-mono">File &gt; Open...</code> and select your
-                                                <code class="bg-purple-800 px-1 rounded font-mono">okta-copilot-lab</code> folder.</li>
-                                            <li>Confirm you see <code class="bg-purple-800 px-1 rounded font-mono">app/</code> and
-                                                <code class="bg-purple-800 px-1 rounded font-mono">package.json</code> in the sidebar.</li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
-                                        <p class="font-semibold mb-1">
-                                            Step 1 – Tell Copilot the Big Picture
-                                        </p>
-                                        <p class="mb-1 text-purple-300">
-                                            Hit <kbd class="bg-purple-800 px-2 py-0.5 rounded font-mono">Cmd + I</kbd> from any file to open
-                                            <strong>Inline Chat</strong> or use the Chat Panel.
-                                        </p>
-                                        <p class="mb-1 text-purple-300">
-                                            Use a <strong>system-level prompt</strong> like:
-                                        </p>
-                                        <div class="bg-black/40 p-2 rounded border border-purple-700 font-mono">
-                                            <p class="text-[11px]">
-                                                &ldquo;You are a Principal Engineer helping me build an 'Okta User Generator' app in this repo.
-                                                Read the existing files first. Keep TypeScript and Tailwind. Prefer creating new files under
-                                                <code>app/</code> instead of inlining everything.&rdquo;
-                                            </p>
-                                        </div>
-                                    </li>
-
-                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
-                                        <p class="font-semibold mb-1">
-                                            Step 2 – Super Prompt: Infrastructure
-                                        </p>
-                                        <p class="mb-1 text-purple-300">
-                                            Paste <strong>Super Prompt 1</strong> from Phase 3 and run it in Composer.
-                                        </p>
-                                        <ul class="list-disc list-inside space-y-1 text-purple-200">
-                                            <li>Watch the <strong>file tree</strong> on the left – new files should appear under
-                                                <code class="bg-purple-800 px-1 rounded font-mono">app/</code>.</li>
-                                            <li>Use the diff view and skim the changes (don’t auto-trust).</li>
-                                            <li>Press <kbd class="bg-purple-800 px-2 py-0.5 rounded font-mono">Cmd + Y</kbd> to
-                                                <strong>Accept All</strong> once it looks sane.</li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
-                                        <p class="font-semibold mb-1">
-                                            Step 3 – Super Prompt: Logic & UI
-                                        </p>
-                                        <p class="mb-1 text-purple-300">
-                                            Now run <strong>Super Prompt 2</strong> to generate the logic and UI.
-                                        </p>
-                                        <ul class="list-disc list-inside space-y-1 text-purple-200">
-                                            <li>Confirm it creates <code class="bg-purple-800 px-1 rounded font-mono">app/actions/userActions.ts</code>
-                                                and <code class="bg-purple-800 px-1 rounded font-mono">app/components/UserGenerator.tsx</code>.</li>
-                                            <li>Look for imports that reference files that don’t exist – if you see one, tell Copilot:
-                                                <span class="italic text-purple-100">“Fix broken imports and only use existing paths.”</span></li>
-                                            <li>Once clean, Accept All and run <code class="bg-purple-800 px-1 rounded font-mono">npm run dev</code>.</li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="bg-purple-950/40 p-3 rounded-lg border border-purple-800">
-                                        <p class="font-semibold mb-1">
-                                            Step 4 – Verify in the Browser
-                                        </p>
-                                        <p class="text-purple-300">
-                                            Visit <code class="bg-purple-800 px-1 rounded font-mono">http://localhost:3000</code>.<br />
-                                            Try generating users. If something breaks, copy the error back into Copilot and say:
-                                            <span class="italic">“Fix this error without changing the API contract.”</span>
-                                        </p>
-                                    </li>
-                                </ol>
-                            </div>
-
-                            <!-- Column 3: Patterns & Troubleshooting -->
-                            <div class="space-y-4 md:col-span-1">
-                                <h3 class="font-bold text-purple-200 text-sm mb-1">3. Patterns & Troubleshooting</h3>
-
-                                <!-- Good Prompt Patterns -->
-                                <div class="bg-purple-950/60 p-4 rounded-lg border border-purple-800 text-xs space-y-2">
-                                    <p class="font-semibold text-purple-100 uppercase tracking-wider text-[11px]">
-                                        Good Copilot Prompts
-                                    </p>
-                                    <ul class="list-disc list-inside text-purple-200 space-y-1">
-                                        <li><span class="font-semibold">“Read these files first:”</span> and list the key files.</li>
-                                        <li><span class="font-semibold">“Only touch files under app/ and app/components/.”</span></li>
-                                        <li><span class="font-semibold">“Keep the existing Okta types and config shape.”</span></li>
-                                        <li><span class="font-semibold">“Show me a diff summary before applying.”</span></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Common Failure Modes -->
-                                <div class="bg-purple-950/60 p-4 rounded-lg border border-purple-800 text-xs space-y-2">
-                                    <p class="font-semibold text-purple-100 uppercase tracking-wider text-[11px]">
-                                        Common Failure Modes
-                                    </p>
-                                    <ul class="list-disc list-inside text-purple-200 space-y-1">
-                                        <li>
-                                            <strong>Hallucinated paths:</strong> Copilot imports
-                                            <code class="bg-purple-800 px-1 rounded font-mono">~/components/Button</code> when it doesn’t exist.
-                                            Fix by saying: <span class="italic">“Only use relative paths from the app/ folder.”</span>
-                                        </li>
-                                        <li>
-                                            <strong>Server vs Client confusion:</strong> If you see
-                                            <code class="bg-purple-800 px-1 rounded font-mono">'use client'</code> at the top of a file that uses
-                                            secrets, ask: <span class="italic">“Move all API tokens and fetch logic into a Server Action.”</span>
-                                        </li>
-                                        <li>
-                                            <strong>Type errors everywhere:</strong> Ask Copilot:
-                                            <span class="italic">“Make the minimal TypeScript fixes needed to compile, but don’t change behavior.”</span>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- Reflection -->
-                                <div class="bg-purple-950/60 p-4 rounded-lg border border-purple-800 text-xs">
-                                    <p class="font-semibold text-purple-100 mb-2">
-                                        Reflection Question (For SEs)
-                                    </p>
-                                    <p class="text-purple-200">
-                                        How much time did it take you to build the User Generator in <strong>Phase 2</strong> vs.
-                                        <strong>Phase 3 with Copilot</strong>? That delta is what your customers feel when you bring
-                                        AI-accelerated prototyping into their POCs.
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1219,17 +1363,12 @@ Return THREE separate code blocks labeled:
             <!-- Glossary / Quick Reference -->
             <section id="glossary" class="scroll-mt-24">
                 <div class="section-shell bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-                    <div class="flex items-center justify-between mb-6">
-                        <div>
-                            <h2 class="text-2xl font-bold text-okta-midnight flex items-center gap-3">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-okta-midnight flex items-center gap-3 mb-2">
                                 <i class="fas fa-book text-indigo-600"></i>
                                 Quick Reference Guide
                             </h2>
-                            <p class="text-sm text-slate-600 mt-1">Essential terms and concepts for this lab</p>
-                        </div>
-                        <button onclick="downloadGlossary()" class="hidden md:flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm font-semibold">
-                            <i class="fas fa-download"></i> Download PDF
-                        </button>
+                        <p class="text-sm text-slate-600">Essential terms and concepts for this lab</p>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-4">
